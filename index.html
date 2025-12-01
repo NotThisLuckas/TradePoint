@@ -5,54 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TradePoint – Trocas de Roube Um Brainrot</title>
   <meta name="description" content="TradePoint: plataforma profissional para trocas do jogo Roube Um Brainrot com anúncios, chat, administração e segurança." />
-  <meta name="theme-color" content="#0b0f1c" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link id="favicon" rel="icon" href="logo.png" />
   <style>
-    :root { --bg:#0b0f1c; --panel:#0e1524; --panel2:#111a2b; --text:#eaf2ff; --muted:#98a8bf; --white:#ffffff; --blue:#26d0ff; --vio:#8b5dff; --neon:#21c8ff; --pink:#ff58d9 }
+    :root { --bg:#f4f6f8; --panel:#ffffff; --panel2:#f2f4f7; --text:#111418; --muted:#5f6b7a; --white:#ffffff; --silver:#d1d6de; --dark:#0f1419; --blue:#d1d6de; --vio:#9aa3ad }
     * { box-sizing: border-box }
     html, body { height:100% }
-    body { margin:0; font-family:Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: radial-gradient(1200px 800px at 10% -10%, rgba(38,208,255,0.13), transparent), radial-gradient(800px 500px at 90% -10%, rgba(139,93,255,0.10), transparent), var(--bg); color: var(--text) }
+    body { margin:0; font-family:Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg, #f8f9fb, #f4f6f8); color: var(--text) }
     a { color: inherit; text-decoration: none }
-    .header { position: sticky; top:0; z-index:50; background: rgba(11,15,28,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(38,208,255,0.18) }
+    .header { position: sticky; top:0; z-index:50; background: #ffffff; border-bottom: 1px solid #e5e7eb }
     .inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display:flex; align-items:center; gap:16px }
-    .brand { display:flex; align-items:center; gap:10px }
-    .logo { width:120px; height:auto; filter: drop-shadow(0 10px 24px rgba(38,208,255,0.35)) }
-    .nav { margin-left:auto; display:flex; gap: 14px; flex-wrap: wrap }
-    .nav a { padding:10px 14px; border-radius:999px; color:#cfe7ff; opacity:0.92; transition: transform .25s ease, background .25s ease }
-    .nav a:hover { transform: translateY(-2px); background: linear-gradient(90deg, rgba(38,208,255,0.18), rgba(139,93,255,0.18)) }
-    .mobile-toggle { display:none; margin-left:auto; appearance:none; border:0; border-radius:12px; padding:10px 12px; font-weight:800; background: linear-gradient(180deg, var(--blue), var(--vio)); color:#051425; box-shadow:0 10px 20px rgba(38,208,255,0.35) }
-    .btn { appearance:none; border:0; border-radius:16px; padding:14px 22px; font-weight:800; letter-spacing:0.02em; cursor:pointer; transition: transform .25s ease, box-shadow .25s ease, filter .25s ease }
-    .btn-primary { color:#051425; background: linear-gradient(180deg, var(--blue), var(--vio)); box-shadow: 0 16px 30px rgba(38,208,255,0.45), inset 0 0 0 1px rgba(255,255,255,0.2) }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 24px 44px rgba(38,208,255,0.55); filter: brightness(1.08) }
-    .btn-secondary { color:#d7e9ff; background: linear-gradient(180deg, #121a2a, #0d1628); box-shadow: 0 12px 22px rgba(0,0,0,0.35); border:1px solid rgba(38,208,255,0.25) }
-    .hero { position:relative; overflow:hidden }
+    .brand { display:flex; align-items:center; gap:10px; color:#111418 }
+    .logo { width:120px; height:auto; filter: drop-shadow(0 6px 12px rgba(15,20,25,0.12)) }
+    .nav { margin-left:auto; display:flex; gap: 10px; flex-wrap: wrap }
+    .nav a { padding:10px 14px; border-radius:999px; color:#333b44; transition: transform .2s ease, background .2s ease }
+    .nav a:hover { transform: translateY(-2px); background: #f2f4f7 }
+    .mobile-toggle { display:none; margin-left:auto; appearance:none; border:1px solid #d1d5db; border-radius:12px; padding:10px 12px; font-weight:800; background:#111418; color:#ffffff; box-shadow:0 8px 18px rgba(17,20,24,0.15) }
+    .btn { appearance:none; border-radius:14px; padding:14px 22px; font-weight:800; letter-spacing:0.02em; cursor:pointer; transition: transform .2s ease, box-shadow .2s ease, filter .2s ease }
+    .btn-primary { color:#ffffff; background:#111418; box-shadow: 0 12px 24px rgba(17,20,24,0.18) }
+    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.05) }
+    .btn-secondary { color:#111418; background:#ffffff; box-shadow: 0 8px 18px rgba(17,20,24,0.10); border:1px solid #d1d5db }
+    .hero { position:relative; overflow:hidden; background:#ffffff }
     .hero-inner { max-width:1200px; margin:0 auto; padding:80px 20px; display:grid; gap:18px; grid-template-columns: 1.1fr .9fr; align-items:center }
     .hero h1 { margin:0; font-size: clamp(32px, 6vw, 54px); letter-spacing:-0.02em }
     .hero p { margin:0; font-size: clamp(16px, 2.8vw, 20px); color: var(--muted) }
-    .mock { width: min(520px, 100%); justify-self: center; border-radius: 24px; background: linear-gradient(135deg, #101a2f, #121d33); box-shadow: 0 30px 80px rgba(38,208,255,0.18); height: 300px; display:grid; place-items:center; color: var(--white); font-weight:800; border: 1px solid rgba(38,208,255,0.25) }
+    .mock { width: min(520px, 100%); justify-self: center; border-radius: 24px; background: #ffffff; box-shadow: 0 18px 48px rgba(17,20,24,0.10); height: 300px; display:grid; place-items:center; color: #111418; font-weight:800; border: 1px solid #e5e7eb }
     .section { max-width:1200px; margin:0 auto; padding:64px 20px }
     .section h2 { margin:0 0 14px; font-size: clamp(24px, 4.8vw, 34px) }
     .muted { color: var(--muted) }
     .grid-3 { display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0, 1fr)) }
     .grid-2 { display:grid; gap:16px; grid-template-columns: repeat(2, minmax(0, 1fr)) }
     .grid-4 { display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0, 1fr)) }
-    .card { border-radius:18px; background: linear-gradient(180deg, var(--panel), var(--panel2)); box-shadow: 0 18px 60px rgba(0,0,0,0.45); padding:20px; border: 1px solid rgba(38,208,255,0.18) }
-    .icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background: radial-gradient(circle at 50% 0%, rgba(38,208,255,0.25), rgba(139,93,255,0.08)); color: var(--white); box-shadow: 0 10px 24px rgba(38,208,255,0.18) }
-    input, select, textarea { width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(38,208,255,0.25); background:#0e1524; color:#d7e9ff; font-size:14px }
+    .card { border-radius:18px; background:#ffffff; box-shadow: 0 12px 36px rgba(17,20,24,0.12); padding:20px; border: 1px solid #e5e7eb }
+    .icon { width:46px; height:46px; border-radius:12px; display:grid; place-items:center; background: linear-gradient(180deg, #f2f4f7, #e5e7eb); color:#111418; box-shadow: 0 8px 18px rgba(17,20,24,0.10) }
+    input, select, textarea { width:100%; padding:12px 14px; border-radius:14px; border:1px solid #d1d5db; background:#ffffff; color:#111418; font-size:14px }
     textarea { min-height: 120px }
     .table-wrap { overflow:auto }
     .table { width:100%; border-collapse: collapse }
-    .table th, .table td { border-bottom: 1px solid rgba(38,208,255,0.18); padding:8px }
-    .footer { border-top: 1px solid rgba(38,208,255,0.18); background: #0b111f; margin-top:40px }
+    .table th, .table td { border-bottom: 1px solid #e5e7eb; padding:8px }
+    .footer { border-top: 1px solid #e5e7eb; background: #ffffff; margin-top:40px }
     .footer-inner { max-width:1200px; margin:0 auto; padding:24px 20px; display:grid; gap:16px; grid-template-columns: 1.2fr .8fr; align-items:center }
     .footer-links { display:flex; gap:12px; flex-wrap: wrap; justify-content:flex-end }
     .scroll-x { overflow-x:auto; white-space:nowrap }
-    .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid rgba(38,208,255,0.25); border-radius:14px; padding:6px 10px; background:#0e1524 }
+    .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid #e5e7eb; border-radius:14px; padding:6px 10px; background:#f7f9fb; color:#111418 }
     .reveal { opacity:0; transform:translateY(12px); transition: opacity .45s ease, transform .45s ease }
     .reveal.on { opacity:1; transform:translateY(0) }
     section, .hero { scroll-margin-top: 80px }
-    @media (max-width: 900px) { .hero-inner { grid-template-columns:1fr; text-align:center } .mobile-toggle { display:inline-flex } .nav { position: fixed; top:0; right:0; width:74vw; max-width:340px; height:100dvh; background:#0b111f; box-shadow: -16px 0 40px rgba(0,0,0,0.35); display:flex; flex-direction:column; padding:18px; gap:10px; transform: translateX(100%); transition: transform .3s ease; z-index:60 } .nav.open { transform: translateX(0); display:flex } }
+    @media (max-width: 900px) { .hero-inner { grid-template-columns:1fr; text-align:center } .mobile-toggle { display:inline-flex } .nav { position: fixed; top:0; right:0; width:74vw; max-width:340px; height:100dvh; background:#ffffff; box-shadow: -16px 0 40px rgba(17,20,24,0.10); display:flex; flex-direction:column; padding:18px; gap:10px; transform: translateX(100%); transition: transform .3s ease; z-index:60 } .nav.open { transform: translateX(0); display:flex } }
     @media (max-width: 700px) { .grid-3, .grid-2, .grid-4 { grid-template-columns:1fr } .btn { padding:12px 18px } input, select, textarea { font-size:16px } .mock { width: 100%; height: 240px } }
     @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important } }
   </style>
@@ -96,7 +96,7 @@
 
   <section id="chat" class="section reveal" style="display:none">
     <h2>Chats</h2>
-    <div class="grid-2"><div class="card"><h3>Conversas abertas</h3><ul id="chatList" style="margin:0; padding-left:20px"></ul></div><div class="card"><h3>Sala</h3><div id="chatBox" style="height:44vh; overflow:auto; display:flex; flex-direction:column; gap:8px; padding:10px; background:#0e1524; border:1px solid rgba(38,208,255,0.18); border-radius:12px"></div><div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap"><input id="chatText" placeholder="Mensagem" /><input id="chatImg" placeholder="Imagem (URL)" /><button id="chatSend" class="btn btn-primary">Enviar</button><button id="chatAdm" class="btn btn-secondary">Chamar ADM</button></div></div></div>
+    <div class="grid-2"><div class="card"><h3>Conversas abertas</h3><ul id="chatList" style="margin:0; padding-left:20px"></ul></div><div class="card"><h3>Sala</h3><div id="chatBox" style="height:44vh; overflow:auto; display:flex; flex-direction:column; gap:8px; padding:10px; background:#f4f6f8; border:1px solid #e5e7eb; border-radius:12px"></div><div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap"><input id="chatText" placeholder="Mensagem" /><input id="chatImg" placeholder="Imagem (URL)" /><button id="chatSend" class="btn btn-primary">Enviar</button><button id="chatAdm" class="btn btn-secondary">Chamar ADM</button></div></div></div>
   </section>
 
   <section id="perfil" class="section reveal" style="display:none">
@@ -123,7 +123,7 @@
   <script>
     const K_USERS='tp_users', K_SESS='tp_session', K_POSTS='tp_posts', K_CHATS='tp_chats', K_CASES='tp_cases', K_LOGS='tp_logs', K_REVIEWS='tp_reviews', K_AV='tp_notices', K_LOGO='tp_logo_url'
     const DEFAULT_LOGO_URL='https://chatgpt.com/s/m_692e020a7b44819186d6d7f77cff9a3c'
-    const FALLBACK_SVG='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26d0ff"/><stop offset="1" stop-color="#8b5dff"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="#0b0f1c"/><path d="M70 70 L70 186 L186 128 Z" fill="url(#g)"/><text x="128" y="230" font-size="42" fill="#eaf2ff" text-anchor="middle" font-family="Poppins">TradePoint</text></svg>')
+    const FALLBACK_SVG='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d1d6de"/><stop offset="1" stop-color="#9aa3ad"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="#ffffff"/><path d="M70 70 L70 186 L186 128 Z" fill="url(#g)"/><text x="128" y="230" font-size="42" fill="#111418" text-anchor="middle" font-family="Poppins">TradePoint</text></svg>')
     function logoUrl(){ return localStorage.getItem(K_LOGO) || DEFAULT_LOGO_URL }
     function applyLogo(){ const url=logoUrl(); document.querySelectorAll('img.logo').forEach(el=>{ el.onerror=()=>{ el.src=FALLBACK_SVG }; el.src=url; }); const fav=document.getElementById('favicon'); if(fav) fav.href=url }
     function seed(){ if(!localStorage.getItem(K_USERS)){ localStorage.setItem(K_USERS, JSON.stringify([{id:'admin', email:'admin@tp', pass:'TradePoint#2025', name:'Admin', role:'admin', photo:'', rep:0, verified:true, muted:false, banned:false, roblox:''}])) } if(!localStorage.getItem(K_POSTS)){ localStorage.setItem(K_POSTS, JSON.stringify([])) } if(!localStorage.getItem(K_CHATS)){ localStorage.setItem(K_CHATS, JSON.stringify([])) } if(!localStorage.getItem(K_CASES)){ localStorage.setItem(K_CASES, JSON.stringify([])) } if(!localStorage.getItem(K_LOGS)){ localStorage.setItem(K_LOGS, JSON.stringify([])) } if(!localStorage.getItem(K_REVIEWS)){ localStorage.setItem(K_REVIEWS, JSON.stringify([])) } if(!localStorage.getItem(K_AV)){ localStorage.setItem(K_AV, '') } }
