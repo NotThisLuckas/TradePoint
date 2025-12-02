@@ -6,206 +6,2887 @@
   <title>TradePoint – Trocas de Roube Um Brainrot</title>
   <meta name="description" content="TradePoint: plataforma profissional para trocas do jogo Roube Um Brainrot com anúncios, chat, administração e segurança." />
   <meta name="theme-color" content="#0b0f1c" />
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link id="favicon" rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230c0f12'/><circle cx='16' cy='16' r='9' fill='%234cc9f0'/></svg>" />
   <style>
-    :root { --bg:#0c0f12; --panel:#11161c; --panel2:#0e1319; --text:#e6eaf1; --muted:#9aa3ad; --white:#ffffff; --border:#1b2530; --accent:#4cc9f0; --accent2:#2b7a9c; --navText:#c7d2df; --bgGrad:#0c0f12 }
-    [data-theme="light"] { --bg:#f6f7f9; --panel:#ffffff; --panel2:#f3f5f7; --text:#0f1419; --muted:#5f6b7a; --white:#ffffff; --border:#e5e7eb; --accent:#111418; --accent2:#333b44; --navText:#333b44; --bgGrad:#f6f7f9 }
-    * { box-sizing: border-box }
-    html, body { height:100% }
-    body { margin:0; font-family:Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bgGrad); color: var(--text) }
-    a { color: inherit; text-decoration: none }
-    .header { position: sticky; top:0; z-index:50; background: rgba(12,15,18,0.8); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border) }
-    .inner { max-width: 1200px; margin: 0 auto; padding: 14px 20px; display:flex; align-items:center; gap:16px }
-    .brand { display:flex; align-items:center; gap:10px; color:var(--text) }
-    .logo { width:160px; height:auto; filter: drop-shadow(0 8px 16px rgba(76,201,240,0.18)) }
-    .nav { margin-left:auto; display:flex; gap: 10px; flex-wrap: wrap }
-    .nav a { padding:10px 14px; border-radius:999px; color:var(--navText); transition: transform .2s ease, background .2s ease }
-    .nav a:hover { transform: translateY(-2px); background: rgba(255,255,255,0.04) }
-    .mobile-toggle { display:none; margin-left:auto; appearance:none; border:0; border-radius:12px; padding:10px 12px; font-weight:800; background: linear-gradient(180deg, var(--accent), var(--accent2)); color:#051425; box-shadow:0 10px 20px rgba(38,208,255,0.28) }
-    .btn { appearance:none; border-radius:16px; padding:14px 22px; font-weight:800; letter-spacing:0.02em; cursor:pointer; transition: transform .25s ease, box-shadow .25s ease, filter .25s ease }
-    .btn-primary { color:#041018; background: linear-gradient(180deg, var(--accent), var(--accent2)); box-shadow: 0 12px 22px rgba(76,201,240,0.20) }
-    .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.04) }
-    .btn-secondary { color:#d7e9ff; background: linear-gradient(180deg, #121a2a, #0d1628); box-shadow: 0 12px 22px rgba(0,0,0,0.35); border:1px solid var(--border) }
-    .hero { position:relative; overflow:hidden }
-    .hero-inner { max-width:1200px; margin:0 auto; padding:80px 20px; display:grid; gap:18px; grid-template-columns: 1.1fr .9fr; align-items:center }
-    .hero h1 { margin:0; font-size: clamp(32px, 6vw, 54px); letter-spacing:-0.02em }
-    .hero p { margin:0; font-size: clamp(16px, 2.8vw, 20px); color: var(--muted) }
-    .mock { width: min(520px, 100%); justify-self: center; border-radius: 20px; background: var(--panel); box-shadow: 0 24px 40px rgba(0,0,0,0.35); height: 300px; display:grid; place-items:center; color: var(--text); font-weight:800; border: 1px solid var(--border) }
-    .section { max-width:1200px; margin:0 auto; padding:64px 20px }
-    .section h2 { margin:0 0 14px; font-size: clamp(24px, 4.8vw, 34px) }
-    .muted { color: var(--muted) }
-    .grid-3 { display:grid; gap:16px; grid-template-columns: repeat(3, minmax(0, 1fr)) }
-    .grid-2 { display:grid; gap:16px; grid-template-columns: repeat(2, minmax(0, 1fr)) }
-    .grid-4 { display:grid; gap:16px; grid-template-columns: repeat(4, minmax(0, 1fr)) }
-    .card { border-radius:16px; background: var(--panel2); box-shadow: 0 10px 24px rgba(0,0,0,0.30); padding:20px; border: 1px solid var(--border) }
-    
-    input, select, textarea { width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:#0f1419; color:var(--text); font-size:14px }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(76,201,240,0.18) }
-    textarea { min-height: 120px }
-    .table-wrap { overflow:auto }
-    .table { width:100%; border-collapse: collapse }
-    .table th, .table td { border-bottom: 1px solid var(--border); padding:8px }
-    .footer { border-top: 1px solid var(--border); background: #0b111f; margin-top:40px }
-    .footer-inner { max-width:1200px; margin:0 auto; padding:24px 20px; display:grid; gap:16px; grid-template-columns: 1.2fr .8fr; align-items:center }
-    .footer-links { display:flex; gap:12px; flex-wrap: wrap; justify-content:flex-end }
-    .scroll-x { overflow-x:auto; white-space:nowrap }
-    .chip { display:inline-flex; align-items:center; gap:6px; border:1px solid var(--border); border-radius:12px; padding:6px 10px; background:#0f1419; color:var(--text) }
-    .reveal { opacity:0; transform:translateY(12px); transition: opacity .45s ease, transform .45s ease }
-    .reveal.on { opacity:1; transform:translateY(0) }
-    section, .hero { scroll-margin-top: 80px }
-    @media (max-width: 900px) { .hero-inner { grid-template-columns:1fr; text-align:center } .mobile-toggle { display:inline-flex } .nav { position: fixed; top:0; right:0; width:74vw; max-width:340px; height:100dvh; background:#0b111f; box-shadow: -16px 0 40px rgba(0,0,0,0.35); display:flex; flex-direction:column; padding:18px; gap:10px; transform: translateX(100%); transition: transform .3s ease; z-index:60 } .nav.open { transform: translateX(0); display:flex } }
-    #toast { position: fixed; right: 20px; bottom: 20px; z-index: 80; display: grid; gap: 8px }
-    .toast { background: linear-gradient(180deg, var(--panel), var(--panel2)); color: var(--text); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; box-shadow: 0 12px 24px rgba(0,0,0,0.30); opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s ease }
-    .toast.on { opacity: 1; transform: translateY(0) }
-    @media (max-width: 700px) { .grid-3, .grid-2, .grid-4 { grid-template-columns:1fr } .btn { padding:12px 18px } input, select, textarea { font-size:16px } .mock { width: 100%; height: 240px } }
-    @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important } }
+    :root {
+      --bg: #0c0f12;
+      --panel: #11161c;
+      --panel2: #0e1319;
+      --text: #e6eaf1;
+      --muted: #9aa3ad;
+      --white: #ffffff;
+      --border: #1b2530;
+      --accent: #4cc9f0;
+      --accent2: #2b7a9c;
+      --navText: #c7d2df;
+      --bgGrad: #0c0f12;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    [data-theme="light"] {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --panel2: #f3f5f7;
+      --text: #0f1419;
+      --muted: #5f6b7a;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --accent: #111418;
+      --accent2: #333b44;
+      --navText: #333b44;
+      --bgGrad: #f6f7f9;
+      --success: #059669;
+      --warning: #d97706;
+      --danger: #dc2626;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bgGrad);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(12, 15, 18, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      color: var(--text);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 160px;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(76, 201, 240, 0.18));
+    }
+
+    .nav {
+      margin-left: auto;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav a {
+      padding: 0.625rem 0.875rem;
+      border-radius: 999px;
+      color: var(--navText);
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+
+    .nav a:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-toggle {
+      display: none;
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      padding: 0.625rem 0.75rem;
+      font-weight: 800;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      color: #051425;
+      cursor: pointer;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 16px;
+      padding: 0.875rem 1.375rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      color: #041018;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 22px rgba(76, 201, 240, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+      box-shadow: 0 16px 28px rgba(76, 201, 240, 0.3);
+    }
+
+    .btn-secondary {
+      color: #d7e9ff;
+      background: linear-gradient(180deg, #121a2a, #0d1628);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(180deg, #162233, #111e33);
+    }
+
+    .btn-danger {
+      background: linear-gradient(180deg, #ef4444, #dc2626);
+      color: white;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.25rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(2rem, 6vw, 3.375rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mock {
+      width: min(520px, 100%);
+      justify-self: center;
+      border-radius: 20px;
+      background: var(--panel);
+      box-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+      height: 300px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+      font-weight: 800;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mock::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(76, 201, 240, 0.1), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.25rem;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.5rem, 4.8vw, 2.125rem);
+      line-height: 1.3;
+    }
+
+    .section h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: 16px;
+      background: var(--panel2);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .card-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem 0.875rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      font-size: 0.875rem;
+      transition: all 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.18);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+
+    .table th {
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 600;
+      text-align: left;
+      padding: 1rem;
+      white-space: nowrap;
+    }
+
+    .table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .table tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-active {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-expired {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-closed {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      background: var(--panel);
+      padding: 2rem 0;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.875rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .scroll-x {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 0.5rem;
+      margin: -0.5rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.375rem 0.625rem;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .chip-accent {
+      background: rgba(76, 201, 240, 0.1);
+      border-color: rgba(76, 201, 240, 0.3);
+      color: var(--accent);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section, .hero {
+      scroll-margin-top: 80px;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 40;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #toast {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 400px;
+    }
+
+    .toast {
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .toast-success {
+      border-left: 4px solid var(--success);
+    }
+
+    .toast-warning {
+      border-left: 4px solid var(--warning);
+    }
+
+    .toast-error {
+      border-left: 4px solid var(--danger);
+    }
+
+    .chat-message {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      max-width: 80%;
+    }
+
+    .chat-message.sent {
+      align-self: flex-end;
+    }
+
+    .chat-message.received {
+      align-self: flex-start;
+    }
+
+    .message-content {
+      padding: 0.75rem 1rem;
+      border-radius: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      word-break: break-word;
+    }
+
+    .message-content.sent {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #041018;
+      border: none;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      color: var(--muted);
+      align-self: flex-end;
+    }
+
+    .message-img {
+      max-width: 200px;
+      border-radius: 12px;
+      margin-top: 0.25rem;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      border-top-color: var(--accent);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 3rem 1.25rem;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 74vw;
+        max-width: 340px;
+        height: 100dvh;
+        background: var(--panel);
+        box-shadow: -16px 0 40px rgba(0, 0, 0, 0.35);
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 0.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        z-index: 60;
+      }
+
+      .nav.open {
+        transform: translateX(0);
+      }
+
+      .grid-3, .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        padding: 0.75rem 1.125rem;
+      }
+
+      .mock {
+        height: 240px;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section {
+        padding: 2rem 1.25rem;
+      }
+
+      .inner {
+        padding: 0.75rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-inner {
+        padding: 2rem 1.25rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .table {
+        font-size: 0.75rem;
+      }
+
+      .table th,
+      .table td {
+        padding: 0.5rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <header class="header">
+  <header class="header" role="banner">
     <div class="inner">
-      <div class="brand"><img class="logo" src="logo.png" alt="TradePoint" /><strong>TradePoint</strong></div>
-      <button id="menuBtn" class="mobile-toggle" aria-label="Abrir menu">Menu</button>
-      <button id="themeBtn" class="btn btn-secondary" style="margin-left:8px">Tema</button>
-      <nav class="nav" id="navMain">
-        <a href="#inicio">Home</a>
-        <a href="#explorar">Explorar Trocas</a>
-        <a href="#criar">Criar Anúncio</a>
-        <a href="#chat">Chat</a>
-        <a href="#perfil">Perfil</a>
-        <a href="#adm">Painel ADM</a>
-        <a href="#conta">Login</a>
-        <a href="#conta" class="btn btn-primary">Cadastro</a>
+      <div class="brand" aria-label="TradePoint">
+        <img class="logo" src="logo.png" alt="TradePoint Logo" />
+        <strong>TradePoint</strong>
+      </div>
+      <button id="menuBtn" class="mobile-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span>Menu</span>
+      </button>
+      <button id="themeBtn" class="btn btn-secondary" aria-label="Alternar tema">
+        <span>Tema</span>
+      </button>
+      <nav class="nav" id="navMain" aria-label="Navegação principal">
+        <a href="#inicio" data-section="inicio">Home</a>
+        <a href="#explorar" data-section="explorar">Explorar Trocas</a>
+        <a href="#criar" data-section="criar">Criar Anúncio</a>
+        <a href="#chat" data-section="chat">Chat</a>
+        <a href="#perfil" data-section="perfil">Perfil</a>
+        <a href="#adm" data-section="adm">Painel ADM</a>
+        <a href="#conta" data-section="conta">Login</a>
+        <a href="#conta" class="btn btn-primary" data-section="conta">Cadastro</a>
       </nav>
     </div>
   </header>
 
-  <section id="inicio" class="hero">
-    <div class="hero-inner">
-      <div class="reveal"><h1>TradePoint — Trocas seguras de Roube Um Brainrot</h1><p>Crie anúncios temporários, converse no chat, chame ADM e finalize trocas com avaliações.</p><div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center"><a href="#criar" class="btn btn-primary">Criar anúncio</a><a href="#explorar" class="btn btn-secondary">Explorar Trocas</a></div></div>
-      <div class="mock reveal">Vitrine de Trocas</div>
-    </div>
-  </section>
+  <main id="mainContent">
+    <section id="inicio" class="hero active">
+      <div class="hero-inner">
+        <div class="reveal">
+          <h1>TradePoint — Trocas seguras de Roube Um Brainrot</h1>
+          <p>Crie anúncios temporários, converse no chat, chame ADM e finalize trocas com avaliações.</p>
+          <div class="hero-actions">
+            <a href="#criar" class="btn btn-primary" data-section="criar">Criar anúncio</a>
+            <a href="#explorar" class="btn btn-secondary" data-section="explorar">Explorar Trocas</a>
+          </div>
+        </div>
+        <div class="mock reveal">
+          <span>Vitrine de Trocas</span>
+        </div>
+      </div>
+    </section>
 
-  <section id="explorar" class="section reveal" style="display:none">
-    <h2>Vitrine de Trocas</h2>
-    <div class="card" style="display:grid; gap:10px"><div style="display:flex; flex-wrap:wrap; gap:10px"><input id="fText" placeholder="Buscar" /><input id="fBrain" placeholder="Nome do brainrot" /><select id="fRarity"><option value="">Raridade</option><option>comum</option><option>raro</option><option>épico</option><option>lendário</option><option>mítico</option><option>God</option><option>Secret</option><option>OG</option></select><input id="fUser" placeholder="Usuário" /><input id="fDate" type="date" /><button id="fApply" class="btn btn-secondary">Filtrar</button><button id="refreshPosts" class="btn btn-secondary">Atualizar anúncios</button></div><div id="exploreStatus" class="muted"></div><div id="listPosts" class="grid-3"></div><div style="display:flex; gap:10px; margin-top:10px"><button id="pgPrev" class="btn btn-secondary">Anterior</button><button id="pgNext" class="btn btn-secondary">Próximo</button><span class="muted" id="pgInfo"></span></div></div>
-    <h3 style="margin-top:24px">Avaliações Recentes</h3>
-    <div class="card scroll-x" id="recentReviews" style="padding:10px; white-space:nowrap"></div>
-  </section>
+    <section id="explorar" class="section">
+      <h2>Vitrine de Trocas</h2>
+      <div class="card">
+        <div class="card-header">
+          <div class="filters">
+            <div class="grid-4" style="gap: 0.75rem;">
+              <input id="fText" placeholder="Buscar" aria-label="Buscar anúncios" />
+              <input id="fBrain" placeholder="Nome do brainrot" aria-label="Filtrar por nome do brainrot" />
+              <select id="fRarity" aria-label="Filtrar por raridade">
+                <option value="">Raridade</option>
+                <option value="comum">Comum</option>
+                <option value="raro">Raro</option>
+                <option value="épico">Épico</option>
+                <option value="lendário">Lendário</option>
+                <option value="mítico">Mítico</option>
+                <option value="God">God</option>
+                <option value="Secret">Secret</option>
+                <option value="OG">OG</option>
+              </select>
+              <input id="fUser" placeholder="Usuário" aria-label="Filtrar por usuário" />
+            </div>
+            <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+              <input id="fDate" type="date" aria-label="Filtrar por data" />
+              <button id="fApply" class="btn btn-secondary">Filtrar</button>
+              <button id="refreshPosts" class="btn btn-secondary">
+                <span>Atualizar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="exploreStatus" class="muted" style="margin-bottom: 1rem;"></div>
+        <div id="listPosts" class="grid-3"></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2rem;">
+          <button id="pgPrev" class="btn btn-secondary" disabled>Anterior</button>
+          <span class="muted" id="pgInfo"></span>
+          <button id="pgNext" class="btn btn-secondary" disabled>Próximo</button>
+        </div>
+      </div>
+      
+      <h3 style="margin-top: 2rem;">Avaliações Recentes</h3>
+      <div class="card scroll-x" id="recentReviews" style="padding: 1rem;"></div>
+    </section>
 
-  <section id="criar" class="section reveal" style="display:none">
-    <h2>Criar Anúncio</h2>
-    <div class="grid-2"><div class="card"><h3>Dados</h3><div style="display:grid; gap:10px"><input id="pImage" placeholder="Foto (URL)" /><input id="pName" placeholder="Nome do brainrot" /><select id="pRarity"><option>comum</option><option>raro</option><option>épico</option><option>lendário</option><option>mítico</option><option>God</option><option>Secret</option><option>OG</option></select><input id="pHave" placeholder="Item que possui" /><input id="pWant" placeholder="Item que procura" /><textarea id="pDesc" placeholder="Descrição (opcional)"></textarea><div class="muted">Expira em: <span id="pExpire">24h</span></div><button id="pCreate" class="btn btn-primary">Publicar</button></div></div><div class="card"><h3>Regras</h3><div class="muted">Anúncios expiram em 24 horas e devem ser repostados. Use imagens reais e descreva claramente sua oferta e procura.</div></div></div>
-  </section>
+    <section id="criar" class="section">
+      <h2>Criar Anúncio</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Dados do Anúncio</h3>
+          <form id="createPostForm">
+            <div class="form-group">
+              <input id="pImage" placeholder="Foto (URL)" aria-label="URL da imagem" />
+            </div>
+            <div class="form-group">
+              <input id="pName" placeholder="Nome do brainrot" required aria-label="Nome do brainrot" />
+            </div>
+            <div class="form-group">
+              <select id="pRarity" required aria-label="Raridade">
+                <option value="">Selecione a raridade</option>
+                <option value="comum">Comum</option>
+                <option value="raro">Raro</option>
+                <option value="épico">Épico</option>
+                <option value="lendário">Lendário</option>
+                <option value="mítico">Mítico</option>
+                <option value="God">God</option>
+                <option value="Secret">Secret</option>
+                <option value="OG">OG</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input id="pHave" placeholder="Item que possui" required aria-label="Item que possui" />
+            </div>
+            <div class="form-group">
+              <input id="pWant" placeholder="Item que procura" required aria-label="Item que procura" />
+            </div>
+            <div class="form-group">
+              <textarea id="pDesc" placeholder="Descrição (opcional)" aria-label="Descrição do anúncio"></textarea>
+            </div>
+            <div class="muted" style="margin-bottom: 1rem;">
+              Expira em: <span id="pExpire">24h</span>
+            </div>
+            <button id="pCreate" class="btn btn-primary" type="submit">Publicar Anúncio</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Regras e Dicas</h3>
+          <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+            <li>Anúncios expiram em 24 horas automaticamente</li>
+            <li>Use imagens reais do item que está oferecendo</li>
+            <li>Descreva claramente sua oferta e o que procura</li>
+            <li>Seja específico sobre a condição do item</li>
+            <li>Evite informações pessoais no anúncio</li>
+            <li>Negocie apenas dentro da plataforma</li>
+          </ul>
+          <div class="muted">
+            Anúncios que violarem as regras serão removidos e o usuário poderá ser penalizado.
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="chat" class="section reveal" style="display:none">
-    <h2>Chats</h2>
-    <div class="grid-2"><div class="card"><h3>Conversas abertas</h3><ul id="chatList" style="margin:0; padding-left:20px"></ul></div><div class="card"><h3>Sala</h3><div id="chatBox" style="height:44vh; overflow:auto; display:flex; flex-direction:column; gap:8px; padding:10px; background:var(--panel2); border:1px solid var(--border); border-radius:12px"></div><div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap"><input id="chatText" placeholder="Mensagem" /><input id="chatImg" placeholder="Imagem (URL)" /><button id="chatSend" class="btn btn-primary">Enviar</button><button id="chatAdm" class="btn btn-secondary">Chamar ADM</button></div></div></div>
-  </section>
+    <section id="chat" class="section">
+      <h2>Chats</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Conversas Abertas</h3>
+          <div id="chatList" style="display: flex; flex-direction: column; gap: 0.5rem;"></div>
+          <div id="noChats" class="muted" style="text-align: center; padding: 2rem;">
+            Nenhuma conversa ativa
+          </div>
+        </div>
+        <div class="card">
+          <h3>Mensagens</h3>
+          <div id="chatBox" 
+               style="height: 44vh; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; padding: 1rem; background: var(--panel); border: 1px solid var(--border); border-radius: 12px;">
+            <div id="noMessages" class="muted" style="text-align: center; padding: 2rem;">
+              Selecione uma conversa
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+            <input id="chatText" placeholder="Digite sua mensagem..." aria-label="Mensagem" style="flex: 1;" />
+            <input id="chatImg" placeholder="Imagem (URL)" aria-label="URL da imagem" />
+            <button id="chatSend" class="btn btn-primary">Enviar</button>
+            <button id="chatAdm" class="btn btn-secondary">Chamar ADM</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="perfil" class="section reveal" style="display:none">
-    <h2>Perfil do Usuário</h2>
-    <div class="grid-2"><div class="card"><h3>Informações</h3><div style="display:grid; gap:10px"><img class="logo" src="logo.png" alt="TradePoint" style="width:120px" /><input id="uPhoto" placeholder="Foto (URL)" /><input id="uName" placeholder="Nome" /><input id="uRoblox" placeholder="ID Roblox (opcional)" /><div class="muted">Reputação: <span id="uRep">0</span></div><button id="uSave" class="btn btn-secondary">Salvar Perfil</button></div></div><div class="card"><h3>Histórico</h3><div class="table-wrap"><table class="table" id="tHistory"><thead><tr><th>Brainrot</th><th>Status</th><th>Data</th></tr></thead><tbody></tbody></table></div><h3 style="margin-top:14px">Avaliações</h3><div class="table-wrap"><table class="table" id="tReviews"><thead><tr><th>Avaliador</th><th>Brainrot</th><th>Tipo</th><th>Data</th></tr></thead><tbody></tbody></table></div></div></div>
-  </section>
+    <section id="perfil" class="section">
+      <h2>Perfil do Usuário</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Informações do Perfil</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <img id="profileImage" class="logo" src="logo.png" alt="Foto de perfil" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; align-self: center;" />
+            <div class="form-group">
+              <label for="uPhoto">Foto (URL)</label>
+              <input id="uPhoto" placeholder="https://exemplo.com/foto.jpg" aria-label="URL da foto de perfil" />
+            </div>
+            <div class="form-group">
+              <label for="uName">Nome</label>
+              <input id="uName" placeholder="Seu nome" required aria-label="Nome do usuário" />
+            </div>
+            <div class="form-group">
+              <label for="uRoblox">ID Roblox (opcional)</label>
+              <input id="uRoblox" placeholder="@usuario" aria-label="ID do Roblox" />
+            </div>
+            <div class="muted">
+              Reputação: <span id="uRep">0</span>
+            </div>
+            <button id="uSave" class="btn btn-secondary">Salvar Perfil</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Histórico de Anúncios</h3>
+          <div class="table-wrap">
+            <table class="table" id="tHistory" aria-label="Histórico de anúncios">
+              <thead>
+                <tr>
+                  <th>Brainrot</th>
+                  <th>Status</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3" class="muted" style="text-align: center; padding: 2rem;">Nenhum anúncio encontrado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 style="margin-top: 1.5rem;">Avaliações Recebidas</h3>
+          <div class="table-wrap">
+            <table class="table" id="tReviews" aria-label="Avaliações recebidas">
+              <thead>
+                <tr>
+                  <th>Avaliador</th>
+                  <th>Brainrot</th>
+                  <th>Tipo</th>
+                  <th>Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4" class="muted" style="text-align: center; padding: 2rem;">Nenhuma avaliação encontrada</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="adm" class="section reveal" style="display:none">
-    <h2>Painel ADM</h2>
-    <div id="admLogin" class="card"><div style="display:grid; gap:10px"><img class="logo" src="logo.png" alt="TradePoint" style="width:120px" /><input id="adUser" placeholder="Usuário" /><input id="adPass" type="password" placeholder="Senha" /><button id="adDo" class="btn btn-primary">Entrar</button></div></div>
-    <div id="admPanel" style="display:none">
-      <div class="grid-3">
-        <div class="card"><h3>Usuários</h3><div class="table-wrap"><table class="table" id="tUsers"><thead><tr><th>Nome</th><th>Email</th><th>Rep</th><th>Role</th><th>Status</th><th>Ações</th></tr></thead><tbody></tbody></table></div></div>
-        <div class="card"><h3>Anúncios</h3><div class="table-wrap"><table class="table" id="tPosts"><thead><tr><th>Brainrot</th><th>Raridade</th><th>Usuário</th><th>Status</th><th>Criado</th><th>Ações</th></tr></thead><tbody></tbody></table></div></div>
-        <div class="card"><h3>Chamados</h3><div class="table-wrap"><table class="table" id="tCases"><thead><tr><th>ID</th><th>Chat</th><th>Usuários</th><th>Status</th><th>Ações</th></tr></thead><tbody></tbody></table></div></div>
-        <div class="card"><h3>Configurações</h3><div style="display:grid; gap:10px"><input id="logoURL" placeholder="URL da logo (PNG/JPG/SVG)" /><button id="logoSet" class="btn btn-secondary">Salvar Logo</button><input type="file" id="logoFile" accept="image/*" /><button id="logoUpload" class="btn btn-secondary">Enviar Logo</button><input id="apiBase" placeholder="API Base URL (ex: https://seu-backend.com)" /><button id="apiSet" class="btn btn-secondary">Salvar API</button></div><div class="muted">Defina logo, envie arquivo ou configure a API. Se a API não estiver definida, o sistema usa modo local.</div></div>
-        <div class="card"><h3>Avisos globais</h3><div style="display:flex; gap:10px"><input id="avText" placeholder="Texto" /><button id="avSet" class="btn btn-secondary">Publicar</button></div><div id="avBox" style="margin-top:8px" class="muted"></div></div>
-        <div class="card"><h3>Logs</h3><div class="table-wrap"><table class="table" id="tLogs"><thead><tr><th>Quando</th><th>Quem</th><th>Ação</th><th>Detalhes</th></tr></thead><tbody></tbody></table></div></div>
+    <section id="adm" class="section">
+      <h2>Painel Administrativo</h2>
+      <div id="admLogin" class="card" style="max-width: 400px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+          <img class="logo" src="logo.png" alt="TradePoint" style="width: 120px;" />
+          <div class="form-group" style="width: 100%;">
+            <label for="adUser">Usuário</label>
+            <input id="adUser" placeholder="admin" required aria-label="Usuário administrador" />
+          </div>
+          <div class="form-group" style="width: 100%;">
+            <label for="adPass">Senha</label>
+            <input id="adPass" type="password" placeholder="••••••••" required aria-label="Senha administrador" />
+          </div>
+          <button id="adDo" class="btn btn-primary" style="width: 100%;">Entrar como ADM</button>
+        </div>
+      </div>
+      <div id="admPanel" style="display: none;">
+        <div class="grid-3">
+          <div class="card">
+            <h3>Usuários</h3>
+            <div class="table-wrap">
+              <table class="table" id="tUsers" aria-label="Lista de usuários">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Rep</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Anúncios Ativos</h3>
+            <div class="table-wrap">
+              <table class="table" id="tPosts" aria-label="Lista de anúncios">
+                <thead>
+                  <tr>
+                    <th>Brainrot</th>
+                    <th>Raridade</th>
+                    <th>Usuário</th>
+                    <th>Status</th>
+                    <th>Criado</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Chamados ADM</h3>
+            <div class="table-wrap">
+              <table class="table" id="tCases" aria-label="Lista de chamados">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Chat</th>
+                    <th>Usuários</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Configurações</h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="form-group">
+                <label for="logoURL">URL da Logo</label>
+                <input id="logoURL" placeholder="https://exemplo.com/logo.png" aria-label="URL da logo" />
+                <button id="logoSet" class="btn btn-secondary" style="margin-top: 0.5rem;">Salvar Logo</button>
+              </div>
+              <div class="form-group">
+                <label for="logoFile">Enviar Logo</label>
+                <input type="file" id="logoFile" accept="image/*" aria-label="Selecionar arquivo de logo" />
+                <button id="logoUpload" class="btn btn-secondary" style="margin-top: 0.5rem;">Enviar Logo</button>
+              </div>
+              <div class="form-group">
+                <label for="apiBase">API Base URL</label>
+                <input id="apiBase" placeholder="https://seu-backend.com/api" aria-label="URL da API" />
+                <button id="apiSet" class="btn btn-secondary" style="margin-top: 0.5rem;">Salvar API</button>
+              </div>
+              <div class="muted">
+                Defina a logo, envie um arquivo ou configure a API. Se a API não estiver definida, o sistema usa o modo local.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Avisos Globais</h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="form-group">
+                <label for="avText">Texto do Aviso</label>
+                <textarea id="avText" placeholder="Digite o aviso global..." aria-label="Texto do aviso global"></textarea>
+              </div>
+              <button id="avSet" class="btn btn-secondary">Publicar Aviso</button>
+              <div id="avBox" class="muted" style="padding: 1rem; background: var(--panel); border-radius: 8px; border: 1px solid var(--border);"></div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Logs do Sistema</h3>
+            <div class="table-wrap">
+              <table class="table" id="tLogs" aria-label="Logs do sistema">
+                <thead>
+                  <tr>
+                    <th>Quando</th>
+                    <th>Quem</th>
+                    <th>Ação</th>
+                    <th>Detalhes</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conta" class="section">
+      <h2>Conta</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Criar Conta</h3>
+          <form id="registerForm">
+            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+              <img class="logo" src="logo.png" alt="TradePoint" style="width: 120px;" />
+              <div class="form-group" style="width: 100%;">
+                <label for="cEmail">Email</label>
+                <input id="cEmail" type="email" placeholder="seu@email.com" required aria-label="Email para cadastro" />
+              </div>
+              <div class="form-group" style="width: 100%;">
+                <label for="cPass">Senha</label>
+                <input id="cPass" type="password" placeholder="••••••••" minlength="6" required aria-label="Senha para cadastro" />
+                <div class="muted" style="font-size: 0.75rem; margin-top: 0.25rem;">Mínimo 6 caracteres</div>
+              </div>
+              <div class="form-group" style="width: 100%;">
+                <label for="cName">Nome</label>
+                <input id="cName" placeholder="Seu nome" required aria-label="Nome para cadastro" />
+              </div>
+              <button id="cDo" class="btn btn-primary" type="submit" style="width: 100%;">Criar Conta</button>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Entrar na Conta</h3>
+          <form id="loginForm">
+            <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+              <img class="logo" src="logo.png" alt="TradePoint" style="width: 120px;" />
+              <div class="form-group" style="width: 100%;">
+                <label for="lEmail">Email</label>
+                <input id="lEmail" type="email" placeholder="seu@email.com" required aria-label="Email para login" />
+              </div>
+              <div class="form-group" style="width: 100%;">
+                <label for="lPass">Senha</label>
+                <input id="lPass" type="password" placeholder="••••••••" required aria-label="Senha para login" />
+              </div>
+              <button id="lDo" class="btn btn-secondary" type="submit" style="width: 100%;">Entrar</button>
+              
+              <div style="width: 100%; margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+                <h4 style="margin-bottom: 1rem;">Redefinir Senha</h4>
+                <div class="form-group">
+                  <label for="resetEmail">Email</label>
+                  <input id="resetEmail" type="email" placeholder="seu@email.com" aria-label="Email para redefinir senha" />
+                </div>
+                <button id="resetDo" class="btn btn-secondary" type="button" style="width: 100%;">Enviar Link de Redefinição</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="brand">
+        <img class="logo" src="logo.png" alt="TradePoint Logo" style="width: 120px;" />
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Home</a>
+        <a href="#explorar">Explorar</a>
+        <a href="#criar">Criar anúncio</a>
+        <a href="#chat">Chat</a>
+        <a href="#perfil">Perfil</a>
+        <a href="#adm">Painel ADM</a>
       </div>
     </div>
-    </div>
-  </section>
+  </footer>
 
-  <section id="conta" class="section reveal" style="display:none">
-    <h2>Conta</h2>
-    <div class="grid-2"><div class="card"><h3>Cadastro</h3><div style="display:grid; gap:10px"><img class="logo" src="logo.png" alt="TradePoint" style="width:120px" /><input id="cEmail" placeholder="Email" /><input id="cPass" type="password" placeholder="Senha" /><input id="cName" placeholder="Nome" /><button id="cDo" class="btn btn-primary">Cadastrar</button></div></div><div class="card"><h3>Login</h3><div style="display:grid; gap:10px"><img class="logo" src="logo.png" alt="TradePoint" style="width:120px" /><input id="lEmail" placeholder="Email" /><input id="lPass" type="password" placeholder="Senha" /><button id="lDo" class="btn btn-secondary">Entrar</button><input id="resetEmail" placeholder="Email para redefinir senha" /><button id="resetDo" class="btn btn-secondary">Redefinir senha</button></div></div></div>
-  </section>
+  <div id="overlay" class="overlay" role="presentation"></div>
+  <div id="toast" role="alert"></div>
 
-  <footer class="footer"><div class="footer-inner"><div class="brand"><img class="logo" src="logo.png" alt="TradePoint" style="width:120px" /></div><div class="footer-links"><a href="#">Explicação do site</a><a href="#explorar">Explorar</a><a href="#criar">Criar anúncio</a><a href="#chat">Chat</a><a href="#perfil">Perfil</a><a href="#adm">Painel ADM</a></div></div></footer>
-
-  <div id="overlay" class="overlay" style="position:fixed; inset:0; background:rgba(0,0,0,0.35); backdrop-filter: blur(2px); opacity:0; pointer-events:none; transition:opacity .3s ease"></div>
-  <div id="toast"></div>
   <script>
-    const K_USERS='tp_users', K_SESS='tp_session', K_POSTS='tp_posts', K_CHATS='tp_chats', K_CASES='tp_cases', K_LOGS='tp_logs', K_REVIEWS='tp_reviews', K_AV='tp_notices', K_LOGO='tp_logo_url', K_THEME='tp_theme', K_API='tp_api'
-    const DEFAULT_LOGO_URL='https://chatgpt.com/s/m_692e020a7b44819186d6d7f77cff9a3c'
-    const FALLBACK_SVG='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d1d6de"/><stop offset="1" stop-color="#9aa3ad"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="#ffffff"/><path d="M70 70 L70 186 L186 128 Z" fill="url(#g)"/><text x="128" y="230" font-size="42" fill="#111418" text-anchor="middle" font-family="Poppins">TradePoint</text></svg>')
-    function logoUrl(){ return localStorage.getItem(K_LOGO) || DEFAULT_LOGO_URL }
-    function applyLogo(){
-      const targets=[...document.querySelectorAll('img.logo')]
-      const fav=document.getElementById('favicon')
-      const url=logoUrl()
-      const isImgLink=/\.(png|jpg|jpeg|gif|svg)(\?.*)?$/i.test(url||'') || /^data:image\//i.test(url||'')
-      const setAll=(src)=>{ targets.forEach(el=>{ el.src=src }) ; if(fav) fav.href=src }
-      if(!url || !isImgLink){ setAll(FALLBACK_SVG); return }
-      const img=new Image(); img.crossOrigin='anonymous'; img.onload=function(){ setAll(url) }; img.onerror=function(){ setAll(FALLBACK_SVG) }; img.src=url
-      targets.forEach(el=>{ el.src=FALLBACK_SVG })
+    // Constantes e configurações
+    const STORAGE_KEYS = {
+      USERS: 'tp_users',
+      SESSION: 'tp_session',
+      POSTS: 'tp_posts',
+      CHATS: 'tp_chats',
+      CASES: 'tp_cases',
+      LOGS: 'tp_logs',
+      REVIEWS: 'tp_reviews',
+      NOTICES: 'tp_notices',
+      LOGO_URL: 'tp_logo_url',
+      THEME: 'tp_theme',
+      API: 'tp_api',
+      PAGE: 'tp_current_page'
+    };
+
+    const DEFAULT_LOGO_URL = 'logo.png';
+    const FALLBACK_SVG = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d1d6de"/><stop offset="1" stop-color="#9aa3ad"/></linearGradient></defs><rect width="256" height="256" rx="24" fill="#ffffff"/><path d="M70 70 L70 186 L186 128 Z" fill="url(#g)"/><text x="128" y="230" font-size="42" fill="#111418" text-anchor="middle" font-family="Poppins">TradePoint</text></svg>'
+    );
+
+    // Sistema de toast
+    function showToast(message, type = 'info', duration = 3000) {
+      const toastContainer = document.getElementById('toast');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.setAttribute('role', 'alert');
+      toast.innerHTML = `
+        <span>${message}</span>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      // Trigger reflow
+      toast.offsetHeight;
+      
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
     }
-    function seed(){ if(!localStorage.getItem(K_USERS)){ localStorage.setItem(K_USERS, JSON.stringify([{id:'admin', email:'admin@tp', pass:'TradePoint#2025', name:'Admin', role:'admin', photo:'', rep:0, verified:true, muted:false, banned:false, roblox:''}])) } if(!localStorage.getItem(K_POSTS)){ localStorage.setItem(K_POSTS, JSON.stringify([])) } if(!localStorage.getItem(K_CHATS)){ localStorage.setItem(K_CHATS, JSON.stringify([])) } if(!localStorage.getItem(K_CASES)){ localStorage.setItem(K_CASES, JSON.stringify([])) } if(!localStorage.getItem(K_LOGS)){ localStorage.setItem(K_LOGS, JSON.stringify([])) } if(!localStorage.getItem(K_REVIEWS)){ localStorage.setItem(K_REVIEWS, JSON.stringify([])) } if(!localStorage.getItem(K_AV)){ localStorage.setItem(K_AV, '') } }
-    function getUsers(){ try{return JSON.parse(localStorage.getItem(K_USERS)||'[]')}catch{return[]} }
-    function setUsers(v){ localStorage.setItem(K_USERS, JSON.stringify(v)) }
-    function getPosts(){ try{return JSON.parse(localStorage.getItem(K_POSTS)||'[]')}catch{return[]} }
-    function setPosts(v){ localStorage.setItem(K_POSTS, JSON.stringify(v)) }
-    function getChats(){ try{return JSON.parse(localStorage.getItem(K_CHATS)||'[]')}catch{return[]} }
-    function setChats(v){ localStorage.setItem(K_CHATS, JSON.stringify(v)) }
-    function getCases(){ try{return JSON.parse(localStorage.getItem(K_CASES)||'[]')}catch{return[]} }
-    function setCases(v){ localStorage.setItem(K_CASES, JSON.stringify(v)) }
-    function getLogs(){ try{return JSON.parse(localStorage.getItem(K_LOGS)||'[]')}catch{return[]} }
-    function setLogs(v){ localStorage.setItem(K_LOGS, JSON.stringify(v)) }
-    function getReviews(){ try{return JSON.parse(localStorage.getItem(K_REVIEWS)||'[]')}catch{return[]} }
-    function setReviews(v){ localStorage.setItem(K_REVIEWS, JSON.stringify(v)) }
-    function getNotice(){ return localStorage.getItem(K_AV)||'' }
-    function setNotice(v){ localStorage.setItem(K_AV, v) }
-    function getSession(){ try{return JSON.parse(localStorage.getItem(K_SESS)||'null')}catch{return null} }
-    function setSession(v){ localStorage.setItem(K_SESS, JSON.stringify(v)) }
-    function me(){ const s=getSession(); if(!s) return null; return getUsers().find(u=>u.id===s.id) }
-    function uid(){ return Math.random().toString(36).slice(2) + Date.now().toString(36) }
-    function now(){ return new Date().toISOString() }
-    function canAct(key,ms){ const k='tp_th_'+key; const last=parseInt(localStorage.getItem(k)||'0',10); const t=Date.now(); if(t-last<ms) return false; localStorage.setItem(k,String(t)); return true }
-    function route(){ const h=window.location.hash||''; const ids=['inicio','explorar','criar','chat','perfil','adm','conta']; ids.forEach(id=>{ const el=document.getElementById(id); if(!el) return; const show=('#'+id===h)|| (h===''&&id==='inicio'); el.style.display= show ? 'block' : 'none' }); if(h==='#explorar'){ ANN_CACHE=null; const st=document.getElementById('exploreStatus'); if(st) st.textContent='Atualizando'; renderExplore(); renderRecentReviews() } if(h==='#chat'){ renderChatList() } if(h==='#perfil'){ renderProfile() } if(h==='#adm'){ document.getElementById('admLogin').style.display='block'; document.getElementById('admPanel').style.display='none'; renderAdminTables() } }
-    function apiBase(){ return localStorage.getItem(K_API)||'' }
-    async function fetchAnnouncements(){ const base=apiBase(); const status=document.getElementById('exploreStatus'); if(!base){ status.textContent='Modo local'; return { ok:true, data:getPosts().filter(p=>p.status==='active').sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)) } } try{ const res=await fetch(base.replace(/\/$/,'')+'/announcements?t='+Date.now(),{cache:'no-store'}); if(!res.ok){ status.textContent='Falha no backend'; return { ok:false, data:getPosts().filter(p=>p.status==='active').sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)) } } const json=await res.json(); status.textContent='Conectado ao backend'; return { ok:true, data:(json||[]).filter(p=>p.status==='active').sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)) } } catch(e){ status.textContent='Sem conexão ao backend'; return { ok:false, data:getPosts().filter(p=>p.status==='active').sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)) } }
-    let ANN_CACHE=null
-    function applyTheme(){ const t=localStorage.getItem(K_THEME)||'dark'; document.documentElement.setAttribute('data-theme', t) }
-    function toggleTheme(){ const t=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light'; localStorage.setItem(K_THEME,t); applyTheme() }
-    function toast(msg){ const box=document.getElementById('toast'); const div=document.createElement('div'); div.className='toast'; div.textContent=msg; box.appendChild(div); requestAnimationFrame(()=>div.classList.add('on')); setTimeout(()=>{ div.classList.remove('on'); setTimeout(()=>div.remove(),250) }, 2000) }
-    function expireSweep(){ const posts=getPosts(); const t=Date.now(); let ch=false; for(const p of posts){ if(p.status==='active' && t>=new Date(p.expiresAt).getTime()){ p.status='expired'; ch=true } if(p.status!=='removed' && !p.createdAt){ p.createdAt=new Date().toISOString(); ch=true } } if(ch) setPosts(posts) }
-    function timeLeft(expiresAt){ const ms=new Date(expiresAt).getTime()-Date.now(); const h=Math.max(0, Math.floor(ms/3600000)); return h+'h' }
-    async function renderExplore(){ try{ expireSweep(); if(!ANN_CACHE){ const res=await fetchAnnouncements(); ANN_CACHE=res.data } const posts=ANN_CACHE.slice(); const q=(document.getElementById('fText').value||'').toLowerCase(); const b=(document.getElementById('fBrain').value||'').toLowerCase(); const r=(document.getElementById('fRarity').value||''); const u=(document.getElementById('fUser').value||'').toLowerCase(); const d=(document.getElementById('fDate').value||''); let list=posts.filter(p=> (!q || (p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)||p.have.toLowerCase().includes(q)||p.want.toLowerCase().includes(q))) && (!b || p.name.toLowerCase().includes(b)) && (!r || p.rarity===r) && (!u || (getUsers().find(x=>x.id===p.userId)?.name||'').toLowerCase().includes(u)) && (!d || (p.createdAt||'').slice(0,10)===d) ); list=list.sort((a,b)=> new Date(b.createdAt)-new Date(a.createdAt)); const pageSize=6; const page=parseInt(localStorage.getItem('tp_page')||'1',10); const pages=Math.max(1, Math.ceil(list.length/pageSize)); const cur=Math.min(page,pages); localStorage.setItem('tp_page',String(cur)); const slice=list.slice((cur-1)*pageSize, cur*pageSize); const box=document.getElementById('listPosts'); box.innerHTML=''; for(const p of slice){ const u=getUsers().find(x=>x.id===p.userId); const card=document.createElement('div'); card.className='card'; card.innerHTML=`<div style='display:grid; gap:8px'><img src='${p.image||''}' alt='brainrot' style='width:100%; height:180px; object-fit:cover; border-radius:14px' onerror="this.style.display='none'"/><div style='display:flex; gap:8px; flex-wrap:wrap'><span class='chip'>${p.name}</span><span class='chip'>${p.rarity}</span><span class='chip'>${u?u.name:'?'}</span><span class='chip'>${p.status==='expired'?'Expirado':'Expira em '+timeLeft(p.expiresAt)}</span></div><div class='muted'>Possui: ${p.have} · Procura: ${p.want}</div><div style='display:flex; gap:10px; flex-wrap:wrap'><button class='btn btn-primary' data-id='${p.id}' data-act='contact'>Entrar em contato</button></div></div>`; box.appendChild(card) } document.getElementById('pgInfo').textContent=`Página ${cur}/${pages}`; box.querySelectorAll('button[data-act=contact]').forEach(b=>b.addEventListener('click',(e)=>{ const id=e.currentTarget.getAttribute('data-id'); openChatForPost(id) })); const st=document.getElementById('exploreStatus'); if(st) st.textContent='' } catch(e){ console.error(e); const st=document.getElementById('exploreStatus'); if(st) st.textContent='Erro na renderização'; toast('Erro ao renderizar anúncios') } }
-    function renderRecentReviews(){ const list=getReviews().slice(-12).reverse(); const box=document.getElementById('recentReviews'); box.innerHTML=''; for(const r of list){ const u=getUsers().find(x=>x.id===r.by); const div=document.createElement('div'); div.className='chip'; div.style.marginRight='8px'; div.innerHTML=`<span>${u?u.name:'?'}</span><span>${r.brain}</span><span>${r.type==='pos'?'Positiva':'Negativa'}</span><span>${new Date(r.date).toLocaleDateString()}</span>`; box.appendChild(div) } }
-    function openChatForPost(postId){ const u=me(); if(!u){ toast('Entre na conta primeiro'); window.location.hash='#conta'; return } const posts=getPosts(); const p=posts.find(x=>x.id===postId); if(!p){ toast('Anúncio não encontrado'); return } let chats=getChats(); let chat=chats.find(c=>c.postId===postId && ((c.aId===u.id)||(c.bId===u.id))); if(!chat){ chat={id:uid(), postId, aId:p.userId, bId:u.id, msgs:[], caseId:null, status:'open'}; chats.push(chat); setChats(chats) } window.location.hash='#chat'; renderChatList(); selectChat(chat.id) }
-    function renderChatList(){ const u=me(); const list=document.getElementById('chatList'); list.innerHTML=''; const chats=getChats().filter(c=> c.aId===u?.id || c.bId===u?.id ); for(const c of chats){ const p=getPosts().find(x=>x.id===c.postId); const li=document.createElement('li'); li.innerHTML=`<a href='#' data-id='${c.id}' class='chatSel'>${p?p.name:'(apagado)'} — ${c.status}</a>`; list.appendChild(li) } list.querySelectorAll('.chatSel').forEach(a=>a.addEventListener('click',(e)=>{ e.preventDefault(); selectChat(e.currentTarget.getAttribute('data-id')) })) }
-    function selectChat(id){ localStorage.setItem('tp_chat',id); const box=document.getElementById('chatBox'); box.innerHTML=''; const chat=getChats().find(c=>c.id===id); if(!chat) return; for(const m of chat.msgs){ const d=document.createElement('div'); d.style.borderRadius='12px'; d.style.padding='8px 10px'; d.style.maxWidth='80%'; d.style.background= m.from===me()?.id ? '#162235' : '#0f1a2b'; d.style.alignSelf= m.from===me()?.id ? 'flex-end' : 'flex-start'; d.textContent= m.type==='text' ? m.content : ''; if(m.type==='img'){ const img=document.createElement('img'); img.src=m.content; img.style.maxWidth='80%'; img.style.borderRadius='12px'; d.textContent=''; d.appendChild(img) } box.appendChild(d) } box.scrollTop=box.scrollHeight }
-    function sendMsg(){ const id=localStorage.getItem('tp_chat'); const chats=getChats(); const i=chats.findIndex(c=>c.id===id); if(i<0){ toast('Selecione um chat'); return } const txt=document.getElementById('chatText').value.trim(); const img=document.getElementById('chatImg').value.trim(); if(!txt && !img){ toast('Escreva ou informe uma imagem'); return } if(!canAct('msg',500)) return; chats[i].msgs.push({from:me().id, type: img ? 'img':'text', content: img||txt, time: now()}); setChats(chats); document.getElementById('chatText').value=''; document.getElementById('chatImg').value=''; selectChat(id); toast('Mensagem enviada') }
-    function callAdm(){ const id=localStorage.getItem('tp_chat'); const chats=getChats(); const chat=chats.find(c=>c.id===id); if(!chat){ toast('Selecione um chat'); return } if(chat.caseId){ toast('Já encaminhado ao ADM'); return } const caseId=uid(); chat.caseId=caseId; setChats(chats); const cases=getCases(); cases.push({id:caseId, chatId:id, postId:chat.postId, aId:chat.aId, bId:chat.bId, status:'open', actions:[], createdAt:now()}); setCases(cases); const logs=getLogs(); logs.push({time:now(), who:me().id, act:'chamar_adm', detail:id}); setLogs(logs); toast('ADM notificado') }
-    function reviewUser(targetId, postId, brain, type){ const revs=getReviews(); revs.push({id:uid(), user:targetId, by:me().id, postId, brain, type, date:now()}); setReviews(revs); const users=getUsers(); const i=users.findIndex(u=>u.id===targetId); if(i>-1){ users[i].rep += (type==='pos'?1:-1); setUsers(users) } }
-    function renderProfile(){ const u=me(); if(!u){ window.location.hash='#conta'; return } document.getElementById('uName').value=u.name||''; document.getElementById('uPhoto').value=u.photo||''; document.getElementById('uRoblox').value=u.roblox||''; document.getElementById('uRep').textContent=u.rep||0; const posts=getPosts().filter(p=>p.userId===u.id); const tbody=document.querySelector('#tHistory tbody'); tbody.innerHTML=''; for(const p of posts){ const tr=document.createElement('tr'); tr.innerHTML=`<td>${p.name}</td><td>${p.status}</td><td>${new Date(p.createdAt).toLocaleString()}</td>`; tbody.appendChild(tr) } const revs=getReviews().filter(r=>r.user===u.id); const tbodyR=document.querySelector('#tReviews tbody'); tbodyR.innerHTML=''; for(const r of revs){ const by=getUsers().find(x=>x.id===r.by); const tr=document.createElement('tr'); tr.innerHTML=`<td>${by?by.name:'?'}</td><td>${r.brain}</td><td>${r.type==='pos'?'Positiva':'Negativa'}</td><td>${new Date(r.date).toLocaleString()}</td>`; tbodyR.appendChild(tr) } }
-    function saveProfile(){ const u=me(); if(!u){ return } const users=getUsers(); const i=users.findIndex(x=>x.id===u.id); users[i].name=document.getElementById('uName').value; users[i].photo=document.getElementById('uPhoto').value; users[i].roblox=document.getElementById('uRoblox').value; setUsers(users); renderProfile(); toast('Perfil salvo') }
-    async function createPost(){ const u=me(); if(!u){ toast('Entre na conta primeiro'); window.location.hash='#conta'; return } const image=document.getElementById('pImage').value.trim(); const name=document.getElementById('pName').value.trim(); const rarity=document.getElementById('pRarity').value; const have=document.getElementById('pHave').value.trim(); const want=document.getElementById('pWant').value.trim(); const desc=document.getElementById('pDesc').value.trim(); if(!name||!have||!want){ toast('Preencha os campos obrigatórios'); return } const createdAt=now(); const expiresAt=new Date(Date.now()+24*3600*1000).toISOString(); const item={id:uid(), userId:u.id, image, name, rarity, have, want, desc, createdAt, expiresAt, status:'active'}; const base=apiBase(); let ok=false; if(base){ try{ const res=await fetch(base.replace(/\/$/,'')+'/announcements',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(item)}); ok=res.ok }catch(e){ ok=false } } if(!ok){ const posts=getPosts(); posts.push(item); setPosts(posts) } ANN_CACHE=null; toast('Publicado'); window.location.hash='#explorar'; await verifyListing(item.id) }
-    async function verifyListing(id){ const res=await fetchAnnouncements(); const found=(res.data||[]).some(p=>p.id===id); const status=document.getElementById('exploreStatus'); ANN_CACHE=res.data; if(found){ status.textContent='Anúncio online'; renderExplore() } else { status.textContent='Falha na listagem'; toast('Falha na listagem') } }
-    function renderAdminTables(){ const users=getUsers(); const tbody=document.querySelector('#tUsers tbody'); if(!tbody) return; tbody.innerHTML=''; for(const u of users){ const st=(u.banned?'Banido':(u.muted?'Mutado':'OK')); const tr=document.createElement('tr'); tr.innerHTML=`<td>${u.name}</td><td>${u.email||''}</td><td>${u.rep||0}</td><td>${u.role||'user'}</td><td>${st}</td><td><button data-id='${u.id}' data-act='ban'>Banir/Desbanir</button><button data-id='${u.id}' data-act='mute'>Mutar/Desmutar</button></td>`; tbody.appendChild(tr) } const posts=getPosts(); const tbodyP=document.querySelector('#tPosts tbody'); tbodyP.innerHTML=''; for(const p of posts){ const u=users.find(x=>x.id===p.userId); const tr=document.createElement('tr'); tr.innerHTML=`<td>${p.name}</td><td>${p.rarity}</td><td>${u?u.name:'?'}</td><td>${p.status}</td><td>${new Date(p.createdAt).toLocaleString()}</td><td><button data-id='${p.id}' data-act='remove'>Remover</button><button data-id='${p.id}' data-act='confirm'>Confirmar troca</button></td>`; tbodyP.appendChild(tr) } const cases=getCases(); const tbodyC=document.querySelector('#tCases tbody'); tbodyC.innerHTML=''; for(const c of cases){ const uA=users.find(x=>x.id===c.aId), uB=users.find(x=>x.id===c.bId); const tr=document.createElement('tr'); tr.innerHTML=`<td>${c.id.slice(-6)}</td><td>${c.chatId.slice(-6)}</td><td>${uA?uA.name:'?'} · ${uB?uB.name:'?'}</td><td>${c.status}</td><td><button data-id='${c.id}' data-act='close'>Encerrar</button><button data-id='${c.id}' data-act='sus'>Sinalizar suspeito</button></td>`; tbodyC.appendChild(tr) } const tbodyL=document.querySelector('#tLogs tbody'); tbodyL.innerHTML=''; const logs=getLogs().slice(-40).reverse(); for(const l of logs){ const u=users.find(x=>x.id===l.who); const tr=document.createElement('tr'); tr.innerHTML=`<td>${new Date(l.time).toLocaleString()}</td><td>${u?u.name:'?'}</td><td>${l.act}</td><td>${l.detail||''}</td>`; tbodyL.appendChild(tr) } document.getElementById('avBox').textContent=getNotice(); const panel=document.getElementById('admPanel'); if(panel) panel.querySelectorAll('button').forEach(b=>b.addEventListener('click',onAdminAction)) }
-    function onAdminAction(e){ const id=e.currentTarget.getAttribute('data-id'); const act=e.currentTarget.getAttribute('data-act'); const users=getUsers(); const posts=getPosts(); const cases=getCases(); const logs=getLogs(); if(act==='ban'){ const i=users.findIndex(u=>u.id===id); if(i>-1){ users[i].banned=!users[i].banned; setUsers(users); logs.push({time:now(), who:me()?.id||'admin', act:users[i].banned?'ban':'unban', detail:id}); setLogs(logs) } } else if(act==='mute'){ const i=users.findIndex(u=>u.id===id); if(i>-1){ users[i].muted=!users[i].muted; setUsers(users); logs.push({time:now(), who:me()?.id||'admin', act:users[i].muted?'mute':'unmute', detail:id}); setLogs(logs) } } else if(act==='remove'){ const i=posts.findIndex(p=>p.id===id); if(i>-1){ posts[i].status='removed'; setPosts(posts); logs.push({time:now(), who:me()?.id||'admin', act:'remove_post', detail:id}); setLogs(logs) } } else if(act==='confirm'){ const p=posts.find(x=>x.id===id); if(p){ const revs=getReviews(); revs.push({id:uid(), user:p.userId, by:me()?.id||'admin', postId:id, brain:p.name, type:'pos', date:now()}); setReviews(revs); logs.push({time:now(), who:me()?.id||'admin', act:'confirm_trade', detail:id}); setLogs(logs) } } else if(act==='close'){ const i=cases.findIndex(c=>c.id===id); if(i>-1){ cases[i].status='closed'; setCases(cases); logs.push({time:now(), who:me()?.id||'admin', act:'close_case', detail:id}); setLogs(logs) } } else if(act==='sus'){ const i=cases.findIndex(c=>c.id===id); if(i>-1){ logs.push({time:now(), who:me()?.id||'admin', act:'flag_suspect', detail:id}); setLogs(logs) } } renderAdminTables() }
-    function verify(email){ return /.+@.+\..+/.test(email||'') }
-    function register(){ const email=document.getElementById('cEmail').value.trim(); const pass=document.getElementById('cPass').value.trim(); const name=document.getElementById('cName').value.trim(); if(!verify(email)||pass.length<4||!name){ toast('Dados inválidos'); return } const users=getUsers(); if(users.find(u=>u.email===email)){ toast('Email já cadastrado'); return } const id=uid(); users.push({id,email,pass,name,role:'user',photo:'',rep:0,verified:false,muted:false,banned:false,roblox:''}); setUsers(users); setSession({id}); toast('Conta criada'); window.location.hash='#perfil'; renderProfile() }
-    function login(){ const email=document.getElementById('lEmail').value.trim(); const pass=document.getElementById('lPass').value.trim(); const u=getUsers().find(u=>u.email===email&&u.pass===pass); if(!u){ toast('Credenciais inválidas'); return } if(u.banned){ toast('Conta banida'); return } setSession({id:u.id}); toast('Login realizado'); window.location.hash='#explorar'; renderExplore() }
-    function reset(){ const email=document.getElementById('resetEmail').value.trim(); const u=getUsers().find(x=>x.email===email); toast(u?'Link de redefinição enviado (demo)':'Email não encontrado') }
-    function admLogin(){ const user=document.getElementById('adUser').value; const pass=document.getElementById('adPass').value; const u=getUsers().find(x=>x.role==='admin' && (x.email===user||x.name===user) && x.pass===pass); if(!u){ toast('Credenciais inválidas'); return } setSession({id:u.id}); document.getElementById('admLogin').style.display='none'; document.getElementById('admPanel').style.display='block'; renderAdminTables(); toast('ADM conectado') }
-    function setNoticeUI(){ const v=document.getElementById('avText').value; setNotice(v); document.getElementById('avBox').textContent=v; toast('Aviso publicado') }
-    function setAPIFromUI(){ const v=document.getElementById('apiBase').value.trim(); localStorage.setItem(K_API, v); ANN_CACHE=null; toast('API salva') }
-    function setLogoFromUI(){ const v=document.getElementById('logoURL').value.trim(); if(!v){ toast('Informe um link de imagem'); return } localStorage.setItem(K_LOGO, v); applyLogo(); toast('Logo atualizada') }
-    function setLogoFromFile(){ const f=document.getElementById('logoFile').files[0]; if(!f){ toast('Selecione um arquivo'); return } const reader=new FileReader(); reader.onload=function(e){ const data=e.target.result; if(!/^data:image\//i.test(data||'')){ toast('Arquivo inválido'); return } localStorage.setItem(K_LOGO, data); applyLogo(); toast('Logo enviada') }; reader.readAsDataURL(f) }
-    function goAnywhere(url){ if(!url) return; window.location.href=url }
-    const revealEls=document.querySelectorAll('.reveal'); const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{threshold:0.25}); revealEls.forEach(el=>io.observe(el)); const menuBtn=document.getElementById('menuBtn'); const nav=document.getElementById('navMain'); const overlay=document.getElementById('overlay'); function toggleMenu(){ const open=!nav.classList.contains('open'); nav.classList.toggle('open',open); overlay.style.opacity=open?'1':'0'; overlay.style.pointerEvents=open?'auto':'none' } menuBtn.addEventListener('click',toggleMenu); overlay.addEventListener('click',toggleMenu); nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ if(nav.classList.contains('open')) toggleMenu() }));
-    applyTheme(); seed(); applyLogo(); route(); window.addEventListener('hashchange',route); document.getElementById('themeBtn').addEventListener('click',toggleTheme); document.getElementById('fApply').addEventListener('click',renderExplore); document.getElementById('pgPrev').addEventListener('click',()=>{ const n=Math.max(1,parseInt(localStorage.getItem('tp_page')||'1',10)-1); localStorage.setItem('tp_page',String(n)); renderExplore() }); document.getElementById('pgNext').addEventListener('click',()=>{ const n=parseInt(localStorage.getItem('tp_page')||'1',10)+1; localStorage.setItem('tp_page',String(n)); renderExplore() }); document.getElementById('refreshPosts').addEventListener('click',()=>{ ANN_CACHE=null; localStorage.setItem('tp_page','1'); renderExplore(); toast('Atualizado') }); window.addEventListener('storage',(e)=>{ if(e.key===K_POSTS && window.location.hash==='#explorar'){ ANN_CACHE=null; renderExplore() } }); setInterval(()=>{ if(window.location.hash==='#explorar'){ ANN_CACHE=null; renderExplore() } },15000); document.getElementById('pCreate').addEventListener('click',createPost); document.getElementById('chatSend').addEventListener('click',sendMsg); document.getElementById('chatAdm').addEventListener('click',callAdm); document.getElementById('uSave').addEventListener('click',saveProfile); document.getElementById('cDo').addEventListener('click',register); document.getElementById('lDo').addEventListener('click',login); document.getElementById('resetDo').addEventListener('click',reset); document.getElementById('adDo').addEventListener('click',admLogin); document.getElementById('avSet').addEventListener('click',setNoticeUI); const logoSet=document.getElementById('logoSet'); if(logoSet) logoSet.addEventListener('click',setLogoFromUI); const logoUpload=document.getElementById('logoUpload'); if(logoUpload) logoUpload.addEventListener('click',setLogoFromFile); const apiSet=document.getElementById('apiSet'); if(apiSet) apiSet.addEventListener('click',setAPIFromUI)
+
+    // Sistema de armazenamento
+    function getStorage(key, defaultValue = []) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : defaultValue;
+      } catch {
+        return defaultValue;
+      }
+    }
+
+    function setStorage(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    // Funções auxiliares
+    function generateId() {
+      return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    }
+
+    function formatDate(date) {
+      return new Date(date).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function formatTime(date) {
+      return new Date(date).toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function timeLeft(expiresAt) {
+      const now = new Date();
+      const expires = new Date(expiresAt);
+      const diff = expires - now;
+      
+      if (diff <= 0) return 'Expirado';
+      
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      
+      return `${hours}h ${minutes}m`;
+    }
+
+    // Sistema de sessão
+    function getCurrentUser() {
+      const session = getStorage(STORAGE_KEYS.SESSION, null);
+      if (!session) return null;
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      return users.find(user => user.id === session.id) || null;
+    }
+
+    function setCurrentUser(user) {
+      if (!user) {
+        localStorage.removeItem(STORAGE_KEYS.SESSION);
+        return;
+      }
+      
+      setStorage(STORAGE_KEYS.SESSION, { id: user.id });
+    }
+
+    function logout() {
+      setCurrentUser(null);
+      showToast('Logout realizado com sucesso', 'success');
+      navigateToSection('inicio');
+      updateNavigation();
+    }
+
+    // Sistema de navegação
+    function navigateToSection(sectionId) {
+      // Remover classe active de todas as seções
+      document.querySelectorAll('.section, .hero').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Adicionar classe active à seção atual
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+      
+      // Atualizar URL
+      window.location.hash = `#${sectionId}`;
+      
+      // Rolar para o topo da seção
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Fechar menu mobile se aberto
+      closeMobileMenu();
+      
+      // Atualizar estado baseado na seção
+      updateSectionState(sectionId);
+    }
+
+    function updateSectionState(sectionId) {
+      const currentUser = getCurrentUser();
+      
+      switch (sectionId) {
+        case 'explorar':
+          loadAnnouncements();
+          loadRecentReviews();
+          break;
+        case 'chat':
+          if (!currentUser) {
+            showToast('Faça login para acessar o chat', 'warning');
+            navigateToSection('conta');
+            return;
+          }
+          loadChats();
+          break;
+        case 'perfil':
+          if (!currentUser) {
+            showToast('Faça login para acessar seu perfil', 'warning');
+            navigateToSection('conta');
+            return;
+          }
+          loadUserProfile();
+          break;
+        case 'adm':
+          // Verificar se é admin
+          if (currentUser?.role !== 'admin') {
+            document.getElementById('admLogin').style.display = 'block';
+            document.getElementById('admPanel').style.display = 'none';
+          } else {
+            document.getElementById('admLogin').style.display = 'none';
+            document.getElementById('admPanel').style.display = 'block';
+            loadAdminPanel();
+          }
+          break;
+      }
+    }
+
+    function updateNavigation() {
+      const currentUser = getCurrentUser();
+      const isAdmin = currentUser?.role === 'admin';
+      
+      // Atualizar links de navegação baseado no login
+      const loginLink = document.querySelector('a[data-section="conta"]');
+      const registerLink = document.querySelector('a.btn-primary[data-section="conta"]');
+      
+      if (currentUser) {
+        loginLink.textContent = 'Sair';
+        loginLink.onclick = (e) => {
+          e.preventDefault();
+          logout();
+        };
+        registerLink.style.display = 'none';
+        
+        // Mostrar link para perfil
+        document.querySelector('a[data-section="perfil"]').style.display = 'block';
+        
+        // Mostrar/ocultar link ADM
+        document.querySelector('a[data-section="adm"]').style.display = isAdmin ? 'block' : 'none';
+      } else {
+        loginLink.textContent = 'Login';
+        loginLink.onclick = null;
+        registerLink.style.display = 'block';
+        
+        // Ocultar perfil e ADM
+        document.querySelector('a[data-section="perfil"]').style.display = 'none';
+        document.querySelector('a[data-section="adm"]').style.display = 'none';
+      }
+    }
+
+    // Sistema de anúncios
+    let announcementsCache = null;
+
+    async function loadAnnouncements() {
+      const statusElement = document.getElementById('exploreStatus');
+      statusElement.textContent = 'Carregando anúncios...';
+      statusElement.className = 'muted';
+      
+      try {
+        const apiBase = localStorage.getItem(STORAGE_KEYS.API);
+        let announcements = [];
+        
+        if (apiBase) {
+          // Tentar carregar da API
+          try {
+            const response = await fetch(`${apiBase}/announcements?status=active`);
+            if (response.ok) {
+              announcements = await response.json();
+              statusElement.textContent = 'Conectado ao backend';
+              statusElement.className = 'status-active';
+            } else {
+              throw new Error('API não respondeu');
+            }
+          } catch (error) {
+            // Fallback para localStorage
+            announcements = getStorage(STORAGE_KEYS.POSTS, [])
+              .filter(post => post.status === 'active');
+            statusElement.textContent = 'Modo offline - usando dados locais';
+            statusElement.className = 'status-expired';
+          }
+        } else {
+          // Usar apenas localStorage
+          announcements = getStorage(STORAGE_KEYS.POSTS, [])
+            .filter(post => post.status === 'active');
+          statusElement.textContent = 'Modo local';
+          statusElement.className = 'muted';
+        }
+        
+        announcementsCache = announcements;
+        renderAnnouncements(announcements);
+        
+      } catch (error) {
+        console.error('Erro ao carregar anúncios:', error);
+        statusElement.textContent = 'Erro ao carregar anúncios';
+        statusElement.className = 'status-closed';
+        showToast('Erro ao carregar anúncios', 'error');
+      }
+    }
+
+    function renderAnnouncements(announcements) {
+      const container = document.getElementById('listPosts');
+      const pageInfo = document.getElementById('pgInfo');
+      const prevBtn = document.getElementById('pgPrev');
+      const nextBtn = document.getElementById('pgNext');
+      
+      // Aplicar filtros
+      const searchTerm = document.getElementById('fText').value.toLowerCase();
+      const brainTerm = document.getElementById('fBrain').value.toLowerCase();
+      const rarityFilter = document.getElementById('fRarity').value;
+      const userFilter = document.getElementById('fUser').value.toLowerCase();
+      const dateFilter = document.getElementById('fDate').value;
+      
+      let filtered = announcements.filter(announcement => {
+        const matchesSearch = !searchTerm || 
+          announcement.name.toLowerCase().includes(searchTerm) ||
+          announcement.description?.toLowerCase().includes(searchTerm) ||
+          announcement.have.toLowerCase().includes(searchTerm) ||
+          announcement.want.toLowerCase().includes(searchTerm);
+        
+        const matchesBrain = !brainTerm || announcement.name.toLowerCase().includes(brainTerm);
+        const matchesRarity = !rarityFilter || announcement.rarity === rarityFilter;
+        const matchesUser = !userFilter || announcement.userName?.toLowerCase().includes(userFilter);
+        const matchesDate = !dateFilter || announcement.createdAt?.startsWith(dateFilter);
+        
+        return matchesSearch && matchesBrain && matchesRarity && matchesUser && matchesDate;
+      });
+      
+      // Ordenar por data (mais recente primeiro)
+      filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      // Paginação
+      const itemsPerPage = 6;
+      const currentPage = parseInt(localStorage.getItem(STORAGE_KEYS.PAGE) || '1');
+      const totalPages = Math.ceil(filtered.length / itemsPerPage);
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageItems = filtered.slice(startIndex, endIndex);
+      
+      // Renderizar anúncios
+      container.innerHTML = '';
+      
+      if (pageItems.length === 0) {
+        container.innerHTML = `
+          <div class="card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+            <h3>Nenhum anúncio encontrado</h3>
+            <p class="muted">Tente ajustar os filtros ou criar um novo anúncio</p>
+          </div>
+        `;
+      } else {
+        pageItems.forEach(announcement => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              ${announcement.image ? `
+                <img src="${announcement.image}" 
+                     alt="${announcement.name}" 
+                     style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px;"
+                     onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMxMTE2MWMiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5YWEzYWQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkJyYWlucm90PC90ZXh0Pjwvc3ZnPg=='">
+              ` : `
+                <div style="width: 100%; height: 180px; background: var(--panel); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--muted);">
+                  Sem imagem
+                </div>
+              `}
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <span class="chip chip-accent">${announcement.name}</span>
+                <span class="chip">${announcement.rarity}</span>
+                <span class="chip">${announcement.userName || 'Anônimo'}</span>
+                <span class="chip ${announcement.status === 'expired' ? 'status-expired' : 'status-active'}" style="font-size: 0.7rem;">
+                  ${timeLeft(announcement.expiresAt)}
+                </span>
+              </div>
+              
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div>
+                  <strong>Possui:</strong>
+                  <span class="muted" style="margin-left: 0.5rem;">${announcement.have}</span>
+                </div>
+                <div>
+                  <strong>Procura:</strong>
+                  <span class="muted" style="margin-left: 0.5rem;">${announcement.want}</span>
+                </div>
+              </div>
+              
+              ${announcement.description ? `
+                <div style="font-size: 0.875rem; color: var(--muted);">
+                  ${announcement.description}
+                </div>
+              ` : ''}
+              
+              <div style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+                <button class="btn btn-primary" data-action="contact" data-id="${announcement.id}" style="flex: 1;">
+                  Entrar em contato
+                </button>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        
+        // Adicionar event listeners aos botões
+        container.querySelectorAll('[data-action="contact"]').forEach(button => {
+          button.addEventListener('click', () => {
+            const announcementId = button.getAttribute('data-id');
+            startChat(announcementId);
+          });
+        });
+      }
+      
+      // Atualizar controles de paginação
+      pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+      prevBtn.disabled = currentPage <= 1;
+      nextBtn.disabled = currentPage >= totalPages;
+      
+      prevBtn.onclick = () => {
+        if (currentPage > 1) {
+          localStorage.setItem(STORAGE_KEYS.PAGE, (currentPage - 1).toString());
+          renderAnnouncements(announcementsCache);
+        }
+      };
+      
+      nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+          localStorage.setItem(STORAGE_KEYS.PAGE, (currentPage + 1).toString());
+          renderAnnouncements(announcementsCache);
+        }
+      };
+    }
+
+    function loadRecentReviews() {
+      const reviews = getStorage(STORAGE_KEYS.REVIEWS, []);
+      const recentReviews = reviews.slice(-10).reverse();
+      const container = document.getElementById('recentReviews');
+      
+      container.innerHTML = '';
+      
+      if (recentReviews.length === 0) {
+        container.innerHTML = '<div class="muted">Nenhuma avaliação recente</div>';
+        return;
+      }
+      
+      recentReviews.forEach(review => {
+        const users = getStorage(STORAGE_KEYS.USERS, []);
+        const reviewer = users.find(u => u.id === review.by);
+        const reviewedUser = users.find(u => u.id === review.user);
+        
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'chip';
+        reviewElement.style.display = 'inline-flex';
+        reviewElement.style.margin = '0.25rem';
+        reviewElement.innerHTML = `
+          <span style="color: ${review.type === 'positive' ? 'var(--success)' : 'var(--danger)'}">★</span>
+          <span>${reviewer?.name || 'Anônimo'}</span>
+          <span>→</span>
+          <span>${reviewedUser?.name || 'Anônimo'}</span>
+          <span class="muted">${formatDate(review.date)}</span>
+        `;
+        container.appendChild(reviewElement);
+      });
+    }
+
+    // Sistema de chat
+    function loadChats() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+      
+      const chats = getStorage(STORAGE_KEYS.CHATS, []);
+      const userChats = chats.filter(chat => 
+        chat.participants.includes(currentUser.id)
+      );
+      
+      const container = document.getElementById('chatList');
+      const noChatsElement = document.getElementById('noChats');
+      
+      container.innerHTML = '';
+      
+      if (userChats.length === 0) {
+        noChatsElement.style.display = 'block';
+        return;
+      }
+      
+      noChatsElement.style.display = 'none';
+      
+      userChats.forEach(chat => {
+        const otherParticipants = chat.participants.filter(id => id !== currentUser.id);
+        const users = getStorage(STORAGE_KEYS.USERS, []);
+        const otherUser = users.find(u => u.id === otherParticipants[0]);
+        
+        const chatElement = document.createElement('button');
+        chatElement.className = 'btn btn-secondary';
+        chatElement.style.textAlign = 'left';
+        chatElement.style.justifyContent = 'flex-start';
+        chatElement.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+            <strong>${otherUser?.name || 'Usuário'}</strong>
+            <span class="muted" style="font-size: 0.875rem;">
+              ${chat.lastMessage ? chat.lastMessage.substring(0, 30) + '...' : 'Sem mensagens'}
+            </span>
+          </div>
+        `;
+        
+        chatElement.addEventListener('click', () => openChat(chat.id));
+        container.appendChild(chatElement);
+      });
+    }
+
+    function openChat(chatId) {
+      const chat = getStorage(STORAGE_KEYS.CHATS, []).find(c => c.id === chatId);
+      if (!chat) return;
+      
+      const container = document.getElementById('chatBox');
+      const noMessagesElement = document.getElementById('noMessages');
+      const currentUser = getCurrentUser();
+      
+      container.innerHTML = '';
+      
+      if (!chat.messages || chat.messages.length === 0) {
+        noMessagesElement.style.display = 'block';
+        return;
+      }
+      
+      noMessagesElement.style.display = 'none';
+      
+      chat.messages.forEach(message => {
+        const isSent = message.senderId === currentUser.id;
+        const messageElement = document.createElement('div');
+        messageElement.className = `chat-message ${isSent ? 'sent' : 'received'}`;
+        
+        let content = '';
+        if (message.type === 'text') {
+          content = `<div class="message-content ${isSent ? 'sent' : ''}">${message.content}</div>`;
+        } else if (message.type === 'image') {
+          content = `
+            <img src="${message.content}" 
+                 alt="Imagem" 
+                 class="message-img"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMxMTE2MWMiLz48dGV4dCB4PSIxMDAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IlBvcHBpbnMiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5YWEzYWQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjM1ZW0iPkltYWdlbSBu428gY2FycmVnYWRhPC90ZXh0Pjwvc3ZnPg=='">
+          `;
+        }
+        
+        messageElement.innerHTML = `
+          ${content}
+          <span class="message-time">${formatTime(message.timestamp)}</span>
+        `;
+        
+        container.appendChild(messageElement);
+      });
+      
+      // Rolar para a última mensagem
+      container.scrollTop = container.scrollHeight;
+      
+      // Salvar chat atual
+      localStorage.setItem('current_chat', chatId);
+    }
+
+    function sendMessage() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) {
+        showToast('Faça login para enviar mensagens', 'warning');
+        return;
+      }
+      
+      const textInput = document.getElementById('chatText');
+      const imageInput = document.getElementById('chatImg');
+      const text = textInput.value.trim();
+      const image = imageInput.value.trim();
+      
+      if (!text && !image) {
+        showToast('Digite uma mensagem ou adicione uma imagem', 'warning');
+        return;
+      }
+      
+      const currentChatId = localStorage.getItem('current_chat');
+      if (!currentChatId) {
+        showToast('Selecione uma conversa primeiro', 'warning');
+        return;
+      }
+      
+      const chats = getStorage(STORAGE_KEYS.CHATS, []);
+      const chatIndex = chats.findIndex(c => c.id === currentChatId);
+      
+      if (chatIndex === -1) {
+        showToast('Conversa não encontrada', 'error');
+        return;
+      }
+      
+      const message = {
+        id: generateId(),
+        senderId: currentUser.id,
+        type: image ? 'image' : 'text',
+        content: image || text,
+        timestamp: new Date().toISOString()
+      };
+      
+      // Adicionar mensagem ao chat
+      if (!chats[chatIndex].messages) {
+        chats[chatIndex].messages = [];
+      }
+      chats[chatIndex].messages.push(message);
+      chats[chatIndex].lastMessage = message.content;
+      chats[chatIndex].updatedAt = new Date().toISOString();
+      
+      setStorage(STORAGE_KEYS.CHATS, chats);
+      
+      // Limpar inputs
+      textInput.value = '';
+      imageInput.value = '';
+      
+      // Atualizar chat
+      openChat(currentChatId);
+      loadChats();
+      
+      showToast('Mensagem enviada', 'success');
+    }
+
+    function startChat(announcementId) {
+      const currentUser = getCurrentUser();
+      if (!currentUser) {
+        showToast('Faça login para iniciar uma conversa', 'warning');
+        navigateToSection('conta');
+        return;
+      }
+      
+      const announcements = getStorage(STORAGE_KEYS.POSTS, []);
+      const announcement = announcements.find(a => a.id === announcementId);
+      
+      if (!announcement) {
+        showToast('Anúncio não encontrado', 'error');
+        return;
+      }
+      
+      // Verificar se já existe um chat
+      const chats = getStorage(STORAGE_KEYS.CHATS, []);
+      const existingChat = chats.find(chat => 
+        chat.announcementId === announcementId && 
+        chat.participants.includes(currentUser.id) &&
+        chat.participants.includes(announcement.userId)
+      );
+      
+      if (existingChat) {
+        // Abrir chat existente
+        navigateToSection('chat');
+        setTimeout(() => openChat(existingChat.id), 100);
+        return;
+      }
+      
+      // Criar novo chat
+      const newChat = {
+        id: generateId(),
+        announcementId,
+        participants: [currentUser.id, announcement.userId],
+        messages: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        status: 'active'
+      };
+      
+      chats.push(newChat);
+      setStorage(STORAGE_KEYS.CHATS, chats);
+      
+      // Navegar para o chat e abrir
+      navigateToSection('chat');
+      setTimeout(() => {
+        openChat(newChat.id);
+        loadChats();
+        showToast('Conversa iniciada', 'success');
+      }, 100);
+    }
+
+    // Sistema de perfil
+    function loadUserProfile() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+      
+      // Preencher informações do perfil
+      document.getElementById('uName').value = currentUser.name || '';
+      document.getElementById('uPhoto').value = currentUser.photo || '';
+      document.getElementById('uRoblox').value = currentUser.roblox || '';
+      document.getElementById('uRep').textContent = currentUser.reputation || 0;
+      
+      // Atualizar imagem de perfil
+      const profileImage = document.getElementById('profileImage');
+      if (currentUser.photo) {
+        profileImage.src = currentUser.photo;
+        profileImage.onerror = () => {
+          profileImage.src = 'logo.png';
+        };
+      }
+      
+      // Carregar histórico de anúncios
+      loadUserAnnouncements();
+      
+      // Carregar avaliações
+      loadUserReviews();
+    }
+
+    function loadUserAnnouncements() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+      
+      const announcements = getStorage(STORAGE_KEYS.POSTS, [])
+        .filter(announcement => announcement.userId === currentUser.id)
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      const tbody = document.querySelector('#tHistory tbody');
+      tbody.innerHTML = '';
+      
+      if (announcements.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="3" class="muted" style="text-align: center; padding: 2rem;">
+              Nenhum anúncio criado
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      announcements.forEach(announcement => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${announcement.name}</td>
+          <td>
+            <span class="status-badge ${announcement.status === 'active' ? 'status-active' : 
+                                      announcement.status === 'expired' ? 'status-expired' : 
+                                      'status-closed'}">
+              ${announcement.status}
+            </span>
+          </td>
+          <td>${formatDate(announcement.createdAt)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function loadUserReviews() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+      
+      const reviews = getStorage(STORAGE_KEYS.REVIEWS, [])
+        .filter(review => review.user === currentUser.id)
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      const tbody = document.querySelector('#tReviews tbody');
+      tbody.innerHTML = '';
+      
+      if (reviews.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="muted" style="text-align: center; padding: 2rem;">
+              Nenhuma avaliação recebida
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      
+      reviews.forEach(review => {
+        const reviewer = users.find(u => u.id === review.by);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${reviewer?.name || 'Anônimo'}</td>
+          <td>${review.brain}</td>
+          <td>
+            <span class="status-badge ${review.type === 'positive' ? 'status-active' : 'status-closed'}">
+              ${review.type === 'positive' ? 'Positiva' : 'Negativa'}
+            </span>
+          </td>
+          <td>${formatDate(review.date)}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function saveProfile() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+      
+      const name = document.getElementById('uName').value.trim();
+      const photo = document.getElementById('uPhoto').value.trim();
+      const roblox = document.getElementById('uRoblox').value.trim();
+      
+      if (!name) {
+        showToast('O nome é obrigatório', 'error');
+        return;
+      }
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const userIndex = users.findIndex(u => u.id === currentUser.id);
+      
+      if (userIndex === -1) return;
+      
+      users[userIndex].name = name;
+      users[userIndex].photo = photo;
+      users[userIndex].roblox = roblox;
+      
+      setStorage(STORAGE_KEYS.USERS, users);
+      
+      // Atualizar imagem de perfil
+      const profileImage = document.getElementById('profileImage');
+      if (photo) {
+        profileImage.src = photo;
+        profileImage.onerror = () => {
+          profileImage.src = 'logo.png';
+        };
+      }
+      
+      showToast('Perfil atualizado com sucesso', 'success');
+      updateNavigation();
+    }
+
+    // Sistema de criação de anúncios
+    function createAnnouncement() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) {
+        showToast('Faça login para criar um anúncio', 'warning');
+        navigateToSection('conta');
+        return;
+      }
+      
+      const name = document.getElementById('pName').value.trim();
+      const rarity = document.getElementById('pRarity').value;
+      const have = document.getElementById('pHave').value.trim();
+      const want = document.getElementById('pWant').value.trim();
+      const description = document.getElementById('pDesc').value.trim();
+      const image = document.getElementById('pImage').value.trim();
+      
+      // Validação
+      if (!name || !rarity || !have || !want) {
+        showToast('Preencha todos os campos obrigatórios', 'error');
+        return;
+      }
+      
+      const announcement = {
+        id: generateId(),
+        userId: currentUser.id,
+        userName: currentUser.name,
+        name,
+        rarity,
+        have,
+        want,
+        description,
+        image,
+        status: 'active',
+        createdAt: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+      };
+      
+      // Salvar no localStorage
+      const announcements = getStorage(STORAGE_KEYS.POSTS, []);
+      announcements.push(announcement);
+      setStorage(STORAGE_KEYS.POSTS, announcements);
+      
+      // Tentar enviar para API se configurada
+      const apiBase = localStorage.getItem(STORAGE_KEYS.API);
+      if (apiBase) {
+        fetch(`${apiBase}/announcements`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(announcement)
+        }).catch(error => {
+          console.warn('Falha ao enviar para API:', error);
+        });
+      }
+      
+      // Limpar formulário
+      document.getElementById('pName').value = '';
+      document.getElementById('pRarity').value = '';
+      document.getElementById('pHave').value = '';
+      document.getElementById('pWant').value = '';
+      document.getElementById('pDesc').value = '';
+      document.getElementById('pImage').value = '';
+      
+      showToast('Anúncio criado com sucesso!', 'success');
+      navigateToSection('explorar');
+    }
+
+    // Sistema administrativo
+    function adminLogin() {
+      const username = document.getElementById('adUser').value.trim();
+      const password = document.getElementById('adPass').value;
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const adminUser = users.find(user => 
+        user.role === 'admin' && 
+        (user.email === username || user.name === username) && 
+        user.password === password
+      );
+      
+      if (!adminUser) {
+        showToast('Credenciais inválidas', 'error');
+        return;
+      }
+      
+      setCurrentUser(adminUser);
+      document.getElementById('admLogin').style.display = 'none';
+      document.getElementById('admPanel').style.display = 'block';
+      loadAdminPanel();
+      updateNavigation();
+      showToast('Login administrativo realizado', 'success');
+    }
+
+    function loadAdminPanel() {
+      loadAdminUsers();
+      loadAdminAnnouncements();
+      loadAdminCases();
+      loadAdminLogs();
+      loadAdminNotice();
+    }
+
+    function loadAdminUsers() {
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const tbody = document.querySelector('#tUsers tbody');
+      
+      tbody.innerHTML = '';
+      
+      users.forEach(user => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              ${user.photo ? `<img src="${user.photo}" alt="${user.name}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">` : ''}
+              <span>${user.name}</span>
+            </div>
+          </td>
+          <td>${user.email || '-'}</td>
+          <td>${user.reputation || 0}</td>
+          <td>
+            <span class="chip ${user.role === 'admin' ? 'chip-accent' : ''}">
+              ${user.role}
+            </span>
+          </td>
+          <td>
+            ${user.banned ? 
+              '<span class="status-badge status-closed">Banido</span>' : 
+              user.muted ? 
+              '<span class="status-badge status-expired">Mutado</span>' : 
+              '<span class="status-badge status-active">Ativo</span>'
+            }
+          </td>
+          <td>
+            <div style="display: flex; gap: 0.25rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" data-action="toggle-ban" data-id="${user.id}" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                ${user.banned ? 'Desbanir' : 'Banir'}
+              </button>
+              <button class="btn btn-secondary" data-action="toggle-mute" data-id="${user.id}" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                ${user.muted ? 'Desmutar' : 'Mutar'}
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      
+      // Adicionar event listeners
+      tbody.querySelectorAll('[data-action="toggle-ban"]').forEach(button => {
+        button.addEventListener('click', () => toggleUserBan(button.getAttribute('data-id')));
+      });
+      
+      tbody.querySelectorAll('[data-action="toggle-mute"]').forEach(button => {
+        button.addEventListener('click', () => toggleUserMute(button.getAttribute('data-id')));
+      });
+    }
+
+    function toggleUserBan(userId) {
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const userIndex = users.findIndex(u => u.id === userId);
+      
+      if (userIndex === -1) return;
+      
+      users[userIndex].banned = !users[userIndex].banned;
+      setStorage(STORAGE_KEYS.USERS, users);
+      
+      // Log da ação
+      const currentUser = getCurrentUser();
+      const logs = getStorage(STORAGE_KEYS.LOGS, []);
+      logs.push({
+        id: generateId(),
+        action: users[userIndex].banned ? 'ban_user' : 'unban_user',
+        userId: currentUser?.id,
+        targetId: userId,
+        timestamp: new Date().toISOString()
+      });
+      setStorage(STORAGE_KEYS.LOGS, logs);
+      
+      loadAdminUsers();
+      showToast(`Usuário ${users[userIndex].banned ? 'banido' : 'desbanido'}`, 'success');
+    }
+
+    function toggleUserMute(userId) {
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const userIndex = users.findIndex(u => u.id === userId);
+      
+      if (userIndex === -1) return;
+      
+      users[userIndex].muted = !users[userIndex].muted;
+      setStorage(STORAGE_KEYS.USERS, users);
+      
+      // Log da ação
+      const currentUser = getCurrentUser();
+      const logs = getStorage(STORAGE_KEYS.LOGS, []);
+      logs.push({
+        id: generateId(),
+        action: users[userIndex].muted ? 'mute_user' : 'unmute_user',
+        userId: currentUser?.id,
+        targetId: userId,
+        timestamp: new Date().toISOString()
+      });
+      setStorage(STORAGE_KEYS.LOGS, logs);
+      
+      loadAdminUsers();
+      showToast(`Usuário ${users[userIndex].muted ? 'mutado' : 'desmutado'}`, 'success');
+    }
+
+    function loadAdminAnnouncements() {
+      const announcements = getStorage(STORAGE_KEYS.POSTS, [])
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const tbody = document.querySelector('#tPosts tbody');
+      
+      tbody.innerHTML = '';
+      
+      announcements.forEach(announcement => {
+        const user = users.find(u => u.id === announcement.userId);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${announcement.name}</td>
+          <td>
+            <span class="chip">${announcement.rarity}</span>
+          </td>
+          <td>${user?.name || 'Anônimo'}</td>
+          <td>
+            <span class="status-badge ${announcement.status === 'active' ? 'status-active' : 
+                                      announcement.status === 'expired' ? 'status-expired' : 
+                                      'status-closed'}">
+              ${announcement.status}
+            </span>
+          </td>
+          <td>${formatDate(announcement.createdAt)}</td>
+          <td>
+            <div style="display: flex; gap: 0.25rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" data-action="remove-post" data-id="${announcement.id}" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                Remover
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      
+      // Adicionar event listeners
+      tbody.querySelectorAll('[data-action="remove-post"]').forEach(button => {
+        button.addEventListener('click', () => removeAnnouncement(button.getAttribute('data-id')));
+      });
+    }
+
+    function removeAnnouncement(announcementId) {
+      const announcements = getStorage(STORAGE_KEYS.POSTS, []);
+      const announcementIndex = announcements.findIndex(a => a.id === announcementId);
+      
+      if (announcementIndex === -1) return;
+      
+      announcements[announcementIndex].status = 'removed';
+      setStorage(STORAGE_KEYS.POSTS, announcements);
+      
+      // Log da ação
+      const currentUser = getCurrentUser();
+      const logs = getStorage(STORAGE_KEYS.LOGS, []);
+      logs.push({
+        id: generateId(),
+        action: 'remove_announcement',
+        userId: currentUser?.id,
+        targetId: announcementId,
+        timestamp: new Date().toISOString()
+      });
+      setStorage(STORAGE_KEYS.LOGS, logs);
+      
+      loadAdminAnnouncements();
+      showToast('Anúncio removido', 'success');
+    }
+
+    function loadAdminCases() {
+      const cases = getStorage(STORAGE_KEYS.CASES, [])
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const tbody = document.querySelector('#tCases tbody');
+      
+      tbody.innerHTML = '';
+      
+      cases.forEach(caseItem => {
+        const participantNames = caseItem.participants
+          .map(id => users.find(u => u.id === id)?.name || 'Usuário')
+          .join(', ');
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <code style="font-size: 0.75rem;">${caseItem.id.substring(0, 8)}</code>
+          </td>
+          <td>
+            <span class="muted">${caseItem.type || 'Geral'}</span>
+          </td>
+          <td>${participantNames}</td>
+          <td>
+            <span class="status-badge ${caseItem.status === 'open' ? 'status-active' : 
+                                      caseItem.status === 'closed' ? 'status-closed' : 
+                                      'status-expired'}">
+              ${caseItem.status}
+            </span>
+          </td>
+          <td>
+            <div style="display: flex; gap: 0.25rem; flex-wrap: wrap;">
+              <button class="btn btn-secondary" data-action="toggle-case" data-id="${caseItem.id}" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">
+                ${caseItem.status === 'open' ? 'Fechar' : 'Reabrir'}
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      
+      // Adicionar event listeners
+      tbody.querySelectorAll('[data-action="toggle-case"]').forEach(button => {
+        button.addEventListener('click', () => toggleCaseStatus(button.getAttribute('data-id')));
+      });
+    }
+
+    function toggleCaseStatus(caseId) {
+      const cases = getStorage(STORAGE_KEYS.CASES, []);
+      const caseIndex = cases.findIndex(c => c.id === caseId);
+      
+      if (caseIndex === -1) return;
+      
+      cases[caseIndex].status = cases[caseIndex].status === 'open' ? 'closed' : 'open';
+      setStorage(STORAGE_KEYS.CASES, cases);
+      
+      // Log da ação
+      const currentUser = getCurrentUser();
+      const logs = getStorage(STORAGE_KEYS.LOGS, []);
+      logs.push({
+        id: generateId(),
+        action: cases[caseIndex].status === 'closed' ? 'close_case' : 'reopen_case',
+        userId: currentUser?.id,
+        targetId: caseId,
+        timestamp: new Date().toISOString()
+      });
+      setStorage(STORAGE_KEYS.LOGS, logs);
+      
+      loadAdminCases();
+      showToast(`Caso ${cases[caseIndex].status === 'closed' ? 'fechado' : 'reaberto'}`, 'success');
+    }
+
+    function loadAdminLogs() {
+      const logs = getStorage(STORAGE_KEYS.LOGS, [])
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+        .slice(0, 50); // Limitar a 50 logs mais recentes
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const tbody = document.querySelector('#tLogs tbody');
+      
+      tbody.innerHTML = '';
+      
+      if (logs.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="muted" style="text-align: center; padding: 2rem;">
+              Nenhum log registrado
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      logs.forEach(log => {
+        const user = users.find(u => u.id === log.userId);
+        const targetUser = users.find(u => u.id === log.targetId);
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${formatDate(log.timestamp)}</td>
+          <td>${user?.name || 'Sistema'}</td>
+          <td>
+            <span class="chip">${log.action.replace('_', ' ')}</span>
+          </td>
+          <td>
+            <span class="muted">${targetUser ? `Alvo: ${targetUser.name}` : log.targetId || '-'}</span>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function loadAdminNotice() {
+      const notice = localStorage.getItem(STORAGE_KEYS.NOTICES) || '';
+      document.getElementById('avBox').textContent = notice;
+    }
+
+    function saveAdminNotice() {
+      const notice = document.getElementById('avText').value.trim();
+      localStorage.setItem(STORAGE_KEYS.NOTICES, notice);
+      loadAdminNotice();
+      showToast('Aviso salvo com sucesso', 'success');
+    }
+
+    // Sistema de conta
+    function register() {
+      const email = document.getElementById('cEmail').value.trim();
+      const password = document.getElementById('cPass').value;
+      const name = document.getElementById('cName').value.trim();
+      
+      // Validação
+      if (!email || !password || !name) {
+        showToast('Preencha todos os campos', 'error');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showToast('A senha deve ter pelo menos 6 caracteres', 'error');
+        return;
+      }
+      
+      if (!isValidEmail(email)) {
+        showToast('Email inválido', 'error');
+        return;
+      }
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      
+      // Verificar se email já existe
+      if (users.some(user => user.email === email)) {
+        showToast('Este email já está cadastrado', 'error');
+        return;
+      }
+      
+      // Criar novo usuário
+      const newUser = {
+        id: generateId(),
+        email,
+        password,
+        name,
+        role: 'user',
+        reputation: 0,
+        createdAt: new Date().toISOString(),
+        banned: false,
+        muted: false
+      };
+      
+      users.push(newUser);
+      setStorage(STORAGE_KEYS.USERS, users);
+      
+      // Fazer login automático
+      setCurrentUser(newUser);
+      
+      // Limpar formulário
+      document.getElementById('cEmail').value = '';
+      document.getElementById('cPass').value = '';
+      document.getElementById('cName').value = '';
+      
+      showToast('Conta criada com sucesso!', 'success');
+      navigateToSection('perfil');
+      updateNavigation();
+    }
+
+    function login() {
+      const email = document.getElementById('lEmail').value.trim();
+      const password = document.getElementById('lPass').value;
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const user = users.find(u => u.email === email && u.password === password);
+      
+      if (!user) {
+        showToast('Email ou senha incorretos', 'error');
+        return;
+      }
+      
+      if (user.banned) {
+        showToast('Esta conta está banida', 'error');
+        return;
+      }
+      
+      setCurrentUser(user);
+      
+      // Limpar formulário
+      document.getElementById('lEmail').value = '';
+      document.getElementById('lPass').value = '';
+      
+      showToast('Login realizado com sucesso!', 'success');
+      
+      // Redirecionar para a página inicial
+      navigateToSection('explorar');
+      updateNavigation();
+    }
+
+    function resetPassword() {
+      const email = document.getElementById('resetEmail').value.trim();
+      
+      if (!email) {
+        showToast('Digite seu email', 'error');
+        return;
+      }
+      
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const user = users.find(u => u.email === email);
+      
+      if (user) {
+        // Em um sistema real, aqui enviaríamos um email
+        showToast('Link de redefinição enviado para seu email', 'success');
+        document.getElementById('resetEmail').value = '';
+      } else {
+        showToast('Email não encontrado', 'error');
+      }
+    }
+
+    // Funções auxiliares
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function setLogoFromURL() {
+      const url = document.getElementById('logoURL').value.trim();
+      
+      if (!url) {
+        showToast('Digite uma URL válida', 'error');
+        return;
+      }
+      
+      localStorage.setItem(STORAGE_KEYS.LOGO_URL, url);
+      applyLogo();
+      showToast('Logo atualizada', 'success');
+    }
+
+    function setLogoFromFile() {
+      const fileInput = document.getElementById('logoFile');
+      const file = fileInput.files[0];
+      
+      if (!file) {
+        showToast('Selecione um arquivo', 'error');
+        return;
+      }
+      
+      if (!file.type.startsWith('image/')) {
+        showToast('Selecione uma imagem válida', 'error');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        localStorage.setItem(STORAGE_KEYS.LOGO_URL, e.target.result);
+        applyLogo();
+        showToast('Logo enviada com sucesso', 'success');
+        fileInput.value = '';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function applyLogo() {
+      const logoUrl = localStorage.getItem(STORAGE_KEYS.LOGO_URL) || DEFAULT_LOGO_URL;
+      const logoElements = document.querySelectorAll('.logo');
+      
+      logoElements.forEach(img => {
+        img.src = logoUrl;
+        img.onerror = () => {
+          img.src = DEFAULT_LOGO_URL;
+        };
+      });
+      
+      // Atualizar favicon
+      const favicon = document.getElementById('favicon');
+      if (favicon) {
+        favicon.href = logoUrl;
+      }
+    }
+
+    function setAPIBase() {
+      const apiUrl = document.getElementById('apiBase').value.trim();
+      
+      if (apiUrl && !isValidURL(apiUrl)) {
+        showToast('URL da API inválida', 'error');
+        return;
+      }
+      
+      localStorage.setItem(STORAGE_KEYS.API, apiUrl);
+      showToast('API configurada com sucesso', 'success');
+    }
+
+    function isValidURL(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = localStorage.getItem(STORAGE_KEYS.THEME) || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      localStorage.setItem(STORAGE_KEYS.THEME, newTheme);
+      document.documentElement.setAttribute('data-theme', newTheme);
+      
+      showToast(`Tema ${newTheme === 'dark' ? 'escuro' : 'claro'} ativado`, 'success');
+    }
+
+    function applyTheme() {
+      const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME) || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    // Sistema de menu mobile
+    function toggleMobileMenu() {
+      const nav = document.getElementById('navMain');
+      const overlay = document.getElementById('overlay');
+      const menuBtn = document.getElementById('menuBtn');
+      const isOpen = nav.classList.contains('open');
+      
+      if (isOpen) {
+        nav.classList.remove('open');
+        overlay.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        nav.classList.add('open');
+        overlay.classList.add('active');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeMobileMenu() {
+      const nav = document.getElementById('navMain');
+      const overlay = document.getElementById('overlay');
+      const menuBtn = document.getElementById('menuBtn');
+      
+      nav.classList.remove('open');
+      overlay.classList.remove('active');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Sistema de animações
+    function initAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      document.querySelectorAll('.reveal').forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    // Inicialização
+    function init() {
+      // Aplicar tema
+      applyTheme();
+      
+      // Aplicar logo
+      applyLogo();
+      
+      // Inicializar animações
+      initAnimations();
+      
+      // Verificar hash da URL
+      const hash = window.location.hash.substring(1) || 'inicio';
+      navigateToSection(hash);
+      
+      // Atualizar navegação
+      updateNavigation();
+      
+      // Adicionar event listeners
+      
+      // Navegação
+      document.querySelectorAll('a[data-section]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = link.getAttribute('data-section');
+          navigateToSection(section);
+        });
+      });
+      
+      // Menu mobile
+      document.getElementById('menuBtn').addEventListener('click', toggleMobileMenu);
+      document.getElementById('overlay').addEventListener('click', closeMobileMenu);
+      
+      // Tema
+      document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+      
+      // Filtros
+      document.getElementById('fApply').addEventListener('click', () => {
+        localStorage.setItem(STORAGE_KEYS.PAGE, '1');
+        renderAnnouncements(announcementsCache || []);
+      });
+      
+      document.getElementById('refreshPosts').addEventListener('click', loadAnnouncements);
+      
+      // Chat
+      document.getElementById('chatSend').addEventListener('click', sendMessage);
+      document.getElementById('chatText').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+      
+      document.getElementById('chatAdm').addEventListener('click', () => {
+        const currentChatId = localStorage.getItem('current_chat');
+        if (!currentChatId) {
+          showToast('Selecione uma conversa primeiro', 'warning');
+          return;
+        }
+        
+        const chats = getStorage(STORAGE_KEYS.CHATS, []);
+        const chat = chats.find(c => c.id === currentChatId);
+        
+        if (!chat) {
+          showToast('Conversa não encontrada', 'error');
+          return;
+        }
+        
+        const cases = getStorage(STORAGE_KEYS.CASES, []);
+        const existingCase = cases.find(c => c.chatId === currentChatId);
+        
+        if (existingCase) {
+          showToast('ADM já notificado para esta conversa', 'info');
+          return;
+        }
+        
+        const newCase = {
+          id: generateId(),
+          chatId: currentChatId,
+          participants: chat.participants,
+          type: 'chat_dispute',
+          status: 'open',
+          createdAt: new Date().toISOString()
+        };
+        
+        cases.push(newCase);
+        setStorage(STORAGE_KEYS.CASES, cases);
+        
+        showToast('ADM notificado com sucesso', 'success');
+      });
+      
+      // Perfil
+      document.getElementById('uSave').addEventListener('click', saveProfile);
+      
+      // Anúncios
+      document.getElementById('pCreate').addEventListener('click', (e) => {
+        e.preventDefault();
+        createAnnouncement();
+      });
+      
+      // Conta
+      document.getElementById('cDo').addEventListener('click', (e) => {
+        e.preventDefault();
+        register();
+      });
+      
+      document.getElementById('lDo').addEventListener('click', (e) => {
+        e.preventDefault();
+        login();
+      });
+      
+      document.getElementById('resetDo').addEventListener('click', resetPassword);
+      
+      // Admin
+      document.getElementById('adDo').addEventListener('click', adminLogin);
+      document.getElementById('avSet').addEventListener('click', saveAdminNotice);
+      document.getElementById('logoSet').addEventListener('click', setLogoFromURL);
+      document.getElementById('logoUpload').addEventListener('click', setLogoFromFile);
+      document.getElementById('apiSet').addEventListener('click', setAPIBase);
+      
+      // Lidar com hash changes
+      window.addEventListener('hashchange', () => {
+        const hash = window.location.hash.substring(1) || 'inicio';
+        navigateToSection(hash);
+      });
+      
+      // Verificar expiração de anúncios periodicamente
+      setInterval(() => {
+        const announcements = getStorage(STORAGE_KEYS.POSTS, []);
+        const now = new Date();
+        let updated = false;
+        
+        announcements.forEach(announcement => {
+          if (announcement.status === 'active' && new Date(announcement.expiresAt) < now) {
+            announcement.status = 'expired';
+            updated = true;
+          }
+        });
+        
+        if (updated) {
+          setStorage(STORAGE_KEYS.POSTS, announcements);
+          if (window.location.hash === '#explorar') {
+            loadAnnouncements();
+          }
+        }
+      }, 60000); // A cada minuto
+      
+      // Limpar cache de anúncios quando necessário
+      window.addEventListener('storage', (e) => {
+        if (e.key === STORAGE_KEYS.POSTS) {
+          announcementsCache = null;
+          if (window.location.hash === '#explorar') {
+            loadAnnouncements();
+          }
+        }
+      });
+      
+      // População inicial de dados de exemplo
+      seedInitialData();
+    }
+
+    function seedInitialData() {
+      // Verificar se já existem dados
+      const users = getStorage(STORAGE_KEYS.USERS, []);
+      const announcements = getStorage(STORAGE_KEYS.POSTS, []);
+      
+      // Criar admin se não existir
+      if (users.length === 0) {
+        const adminUser = {
+          id: 'admin_001',
+          email: 'admin@tradepoint.com',
+          password: 'admin123',
+          name: 'Administrador',
+          role: 'admin',
+          reputation: 100,
+          createdAt: new Date().toISOString(),
+          banned: false,
+          muted: false
+        };
+        
+        users.push(adminUser);
+        setStorage(STORAGE_KEYS.USERS, users);
+      }
+      
+      // Criar alguns anúncios de exemplo se não existirem
+      if (announcements.length === 0) {
+        const sampleAnnouncements = [
+          {
+            id: 'ann_001',
+            userId: 'admin_001',
+            userName: 'Administrador',
+            name: 'Brainrot Épico',
+            rarity: 'épico',
+            have: 'Brainrot Raro Azul',
+            want: 'Brainrot Lendário Dourado',
+            description: 'Procurando trocar meu brainrot raro azul por um lendário dourado. Em ótimo estado!',
+            image: 'https://via.placeholder.com/400x300/4cc9f0/ffffff?text=Brainrot+Épico',
+            status: 'active',
+            createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+            expiresAt: new Date(Date.now() + 22 * 60 * 60 * 1000).toISOString()
+          },
+          {
+            id: 'ann_002',
+            userId: 'user_001',
+            userName: 'João Silva',
+            name: 'Brainrot Lendário',
+            rarity: 'lendário',
+            have: 'Brainrot Mítico Vermelho',
+            want: 'Brainrot Secret',
+            description: 'Tenho um brainrot mítico vermelho para trocar por um secret. Negócio sério!',
+            image: 'https://via.placeholder.com/400x300/10b981/ffffff?text=Brainrot+Lendário',
+            status: 'active',
+            createdAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+            expiresAt: new Date(Date.now() + 23 * 60 * 60 * 1000).toISOString()
+          },
+          {
+            id: 'ann_003',
+            userId: 'user_002',
+            userName: 'Maria Santos',
+            name: 'Brainrot Raro',
+            rarity: 'raro',
+            have: 'Brainrot Comum Verde',
+            want: 'Brainrot Raro',
+            description: 'Troco brainrot comum verde por qualquer brainrot raro.',
+            image: 'https://via.placeholder.com/400x300/f59e0b/ffffff?text=Brainrot+Raro',
+            status: 'active',
+            createdAt: new Date().toISOString(),
+            expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+          }
+        ];
+        
+        // Adicionar usuários de exemplo
+        if (!users.some(u => u.id === 'user_001')) {
+          users.push({
+            id: 'user_001',
+            email: 'joao@exemplo.com',
+            password: 'senha123',
+            name: 'João Silva',
+            role: 'user',
+            reputation: 15,
+            createdAt: new Date().toISOString(),
+            banned: false,
+            muted: false
+          });
+        }
+        
+        if (!users.some(u => u.id === 'user_002')) {
+          users.push({
+            id: 'user_002',
+            email: 'maria@exemplo.com',
+            password: 'senha123',
+            name: 'Maria Santos',
+            role: 'user',
+            reputation: 8,
+            createdAt: new Date().toISOString(),
+            banned: false,
+            muted: false
+          });
+        }
+        
+        setStorage(STORAGE_KEYS.USERS, users);
+        setStorage(STORAGE_KEYS.POSTS, sampleAnnouncements);
+        
+        // Adicionar algumas avaliações de exemplo
+        const sampleReviews = [
+          {
+            id: 'rev_001',
+            by: 'user_001',
+            user: 'admin_001',
+            brain: 'Brainrot Épico',
+            type: 'positive',
+            date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+          },
+          {
+            id: 'rev_002',
+            by: 'admin_001',
+            user: 'user_002',
+            brain: 'Brainrot Raro',
+            type: 'positive',
+            date: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString()
+          }
+        ];
+        
+        setStorage(STORAGE_KEYS.REVIEWS, sampleReviews);
+      }
+    }
+
+    // Inicializar a aplicação quando o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
